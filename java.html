@@ -1443,12 +1443,12 @@ System.out.println(today.format(formatter));
 | `ss`     | másodperc |
 </code></pre>
 <p><strong>Példa dátum + idő formázás</strong></p>
-<pre><code class="language-java">LocalDateTime now = LocalDateTime.now();
+<pre><code class="language-java">LocalDateTime most = LocalDateTime.now();
 
-DateTimeFormatter formatter =
+DateTimeFormatter datumFormazas =
         DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm");
 
-System.out.println(now.format(formatter));
+System.out.println(most.format(datumFormazas));
 </code></pre>
 <p>példa kimenet</p>
 <p>2026.03.15 18:45</p>
