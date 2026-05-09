@@ -1429,12 +1429,12 @@ kimenet:
 **Példa dátum + idő formázás**
 
 ```java
-LocalDateTime now = LocalDateTime.now();
+LocalDateTime most = LocalDateTime.now();
 
-DateTimeFormatter formatter =
+DateTimeFormatter datumFormazas =
         DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm");
 
-System.out.println(now.format(formatter));
+System.out.println(most.format(datumFormazas));
 ```
 
 példa kimenet

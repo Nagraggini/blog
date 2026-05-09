@@ -165,3 +165,15 @@ eSZJA felületén keress rá bal oldalt a 19-re.
     "293. sor IV. negyedévéhez írd be a Trading 212 Bonus+ Pénzvisszatérítés * 0,13 (13 %) Szocho
      
 
+# Biztosítások
+
+https://www.biztositas.hu/
+
+# Bank
+
+MÁK = Magyar Állam Kincstár
+
+https://bankszamlavalaszto.mnb.hu/
+
+Egészpénztár megtakarítás szja-ban 20 %ot visszakapsz. Vigyázni kell vele, mert van havidíj és nem az egész befizetés megy számlára, levonják a kezelési költséget.
+

@@ -1,11 +1,16 @@
 # Teszt automatizálás
 
-## Ezeket használják manapság
+**Ezeket használják manapság**
 
 Playwright (nagyon modern, Udemy-n jó kurzusok vannak)
 Cypress (frontend fókuszú)
 Ranorex  -Az oldala kifejetezzen segít: support.ranorex.com + (Udemy)
 Automatizált Teszt Keretrendszer (ATF)
+
+# Források
+
+[Utest.com](https://www.utest.com/resources)
+[API tesztelés videókurzus](https://www.youtube.com/watch?v=hvSlWnLiK_U&list=PLimzEeSv6f4Vk6cXGpoGU2ZhNcyI5rzTp)
 
 ## Selenium
 
