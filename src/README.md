@@ -22,7 +22,6 @@
 * [Exercism (Java gyarkoláshoz és még sok más nyelvhez)](https://exercism.org/tracks/java/exercises)
 * [JavaScript az alapoktól kurzus (videó)](https://www.youtube.com/playlist?list=PL6VA7Z5zO0dq-6NWrHzIy7dqLfeZhhhOz)
 * [Developer Productivity (videó)](https://www.youtube.com/watch?v=-atblwgc63E&list=PL0vfts4VzfNg__PkSVKhrYvdc35kHybBy)
-* [Webdesign tanfolyam: HTML + CSS alapoktól a felső szintig (videó)](https://www.youtube.com/watch?v=CtrMhe5Azys)
 * [Kvíz](https://devchallenge.hu/hu/tests-list)
 * [Practise Python and Typescript](https://checkio.org/)
 * [Rövid kódot lehet vizualizálni.](https://pythontutor.com/java.html#mode=edit)
@@ -36,6 +35,8 @@
 * [Code step by step](https://www.codestepbystep.com/)
 * [Dev.to Közösség](https://dev.to/)
 * [Major League Hacking (lehet indulni)](https://mlh.io/)
+* [Scrimba](https://scrimba.com/fullstack-path-c0fullstack)
+* [Udemy](https://www.udemy.com/)
 
 ## Python és még sok máshoz
 
