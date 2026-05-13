@@ -9,8 +9,10 @@ Automatizált Teszt Keretrendszer (ATF)
 
 # Források
 
-[Utest.com](https://www.utest.com/resources)
-[API tesztelés videókurzus](https://www.youtube.com/watch?v=hvSlWnLiK_U&list=PLimzEeSv6f4Vk6cXGpoGU2ZhNcyI5rzTp)
+[Utest.com](https://www.utest.com/resources)            
+[API tesztelés videókurzus](https://www.youtube.com/watch?v=hvSlWnLiK_U&list=PLimzEeSv6f4Vk6cXGpoGU2ZhNcyI5rzTp)        
+[UI test playground (the internet)](https://the-internet.herokuapp.com/)
+[UI Test Automation Playground](http://www.uitestingplayground.com/)
 
 ## Selenium
 

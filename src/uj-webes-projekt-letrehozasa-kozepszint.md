@@ -264,7 +264,7 @@ Ezután commitolj és mehet a push and pull a GitHub Desktop alkalmazásban.
 
 # Badge-k a readme fájlba
 
-![Workflow neve](https://github.com/Nagraggini/webfejlesztes-modulzaro-260117-F-Andrea/actions/workflows/playwright.yml/badge.svg)
+![Workflow neve](https://github.com/Nagraggini/my-project/actions/workflows/playwright.yml/badge.svg)
 ![Branches](.github/badges/branches.svg)
 ![HTML](https://img.shields.io/badge/HTML-60%25-purple?style=flat-square&logo=java)
 ![License](https://img.shields.io/badge/license-MIT-green)
