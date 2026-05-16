@@ -24,6 +24,5 @@
 ## Projekt és Karrier
 - [Mappa struktúra és GitHub](mappa-struktura-es-github.md)
 - [Webfejlesztés áttekintés](webfejlesztes-attekintes.md)
-- [Extra nagyon hasznos kiegészítők](extra-nagyon-hasznos-kiegeszitok.md)
 - [Motiváció](motivacio.md)
 - [Projekt ötletek](projekt-otletek.md)

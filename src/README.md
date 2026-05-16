@@ -9,6 +9,17 @@
 
 ---
 
+# Git és verziókezelés
+
+* [Learn Git Branching](https://learngitbranching.js.org/)  
+  Interaktív Git gyakorlás.
+
+* [Oh My Git!](https://ohmygit.org/)  
+  Git tanulás játékosan.
+
+* [Git Immersion](https://gitimmersion.com/)  
+  Git tutorial lépésről lépésre.
+  
 # 1. Kezdő szint — Stabil alapok
 
 ## Webfejlesztés alapjai
@@ -81,6 +92,20 @@
 
 ---
 
+# Projekt ötletek
+
+* Todo alkalmazás
+* Jegyzet app
+* REST API
+* URL rövidítő
+* Quiz app
+* Egyszerű webshop
+* Automatizált UI tesztek webshophoz
+
+Nem gond, ha elsőnek spagetti kódot csinálsz a lényeg, hogy kódolj és ne csak nézd egymás utána  tutorialokat, hanem hogy ELKEZDJ KÓDOLNI!
+
+---
+
 # 2. Frontend fejlesztés
 
 ## CSS tanulás
@@ -135,6 +160,12 @@
 * [LeetCode](https://leetcode.com)  
   Algoritmusok, adatszerkezetek és technikai interjú feladatok gyakorlása.
 
+* [Java Design Patterns](https://java-design-patterns.com)  
+  Java tervezési minták gyakorlati példákkal.
+
+* [Refactoring Guru](https://refactoring.guru)  
+  Refaktorálás, clean code és design pattern magyarázatok.
+  
 ---
 
 ## Backend roadmap
@@ -246,8 +277,14 @@
 * [UI Test Playground (The Internet)](https://the-internet.herokuapp.com/)  
   Selenium és Playwright automatizált tesztek gyakorló oldala.
 
+* [Webshop UI Playground](https://www.saucedemo.com/)
+  Selenium és Playwright automatizált tesztek gyakorlásához oldal.
+
 * [UI Test Automation Playground](http://www.uitestingplayground.com/)  
   Automatizált UI tesztek gyakorlása különféle locator problémákkal.
+
+* [Automata tesztek UI és API Teszt](https://automationexercise.com/test_cases)
+* Itt vannak konkrét feladatok is.
 
 * [SelectorHub](https://selectorshub.com)  
   XPath és CSS selector generálás.
@@ -260,7 +297,32 @@
 
 ---
 
+# Linux és parancssor (Főleg back-end és QA-nál fontos.)
+
+* [Linux Journey](https://linuxjourney.com/)  
+  Linux alapok kezdőknek.
+
+* [OverTheWire Bandit](https://overthewire.org/wargames/bandit/)  
+  CLI és Linux gyakorlás játékosan.
+
+* [ExplainShell](https://explainshell.com/)  
+  Linux parancsok magyarázata.
+
+---
+
 # 5. Haladó fejlesztői eszközök
+
+## Hasznos kód elemző eszközök
+
+* [Codacy](https://app.codacy.com/)  
+  Automatizált kódelemzés és code quality ellenőrzés.
+
+* [SonarCloud](https://sonarcloud.io)  
+  Statikus kódelemzés és technical debt figyelés.
+
+* SonarLint  
+  IDE plugin, ami valós időben jelzi a kódhibákat és rossz practice-eket.
+
 
 ## Diagramok és architektúra
 
@@ -330,8 +392,10 @@
 * [RxResume](https://rxresu.me/)  
   Modern fejlesztői önéletrajz készítő.
 
----
+* [LinkedIn](https://www.linkedin.com/)
 
+---
+  
 # Könyv repository
 
 A könyvem repoját [itt](https://github.com/Nagraggini/my-awesome-book) találod.

@@ -42,64 +42,64 @@ Settings->Extensions->Prettier-> Tab Width:4
 
 A felkiálltójellel ellátottak a legfontosabbak.
 
-Angular Language Service (Segít Angular projektekben: hibák, kódkiegészítés, IntelliSense.)
-Angular Snippets (Version 18) (Kész Angular kódrészletek (ngFor, ngIf, component stb.).)
-Auto Close Tag!
-Auto Rename Tag!
-Bookmarks (Kódrészek megjelölése könyvjelzőként → gyorsabb navigálás.)
-Bootstrap 4, Font awesome 4, Font Awesome 5 Free (Gyors Bootstrap és ikon beillesztés.)
-Bootstrap 5 Quick Snippets (Gyors Bootstrap és ikon beillesztés.)
-Black Formatter (Python kódformázó.)
-Bracket Pair Color DLW (Beszínezi az egyező {} [] () párokat.)
-Code Spell Checker (Ellenőrzi a helyesírást kódban (pl. elgépelések változónévben).) !
-CodeSnap (Kódrészletből szép képet készít.)
-Colorful Comments (A kommenteket színesebbé teszi (// TODO, // WARNING).)!
-Todo Tree (A TODO-kat gyűjti össze az adott projektben.)
-Color Highlight (A CSS színeket kiemeli.)
-Copy Relative Path (Gyors másolása a fájl relatív elérési útvonalának.)
-CSS Peek (Ctrl+katt megmutatja, melyik CSS szabály vonatkozik az elemre.)!
-css-auto-prefix (Sok régi böngésző nem támogatja a modern css-t. Emiatt érdemes ezt letölteni.)
-ESLint (JavaScript hibakereső és szabály-ellenőrző.)
-Formatting Toggle (Ki/be kapcsolja a kódformázót (pl. Prettier).)
-Git History(Megmutatja a régi commitokat.)
-Git Project Manager (Projektkezelés Git-tel.)
-GitHub Copilot (A kódon belül segít neked, ne használd.)
-GitHub Copilot Chat (Ne használd.)
-GitHub Pull Requests (GitHub PR-ek kezelése.)
-GitLens - Git supercharged (Mindenre jó a Gitben: ki írta a sort, mikor, változások, diff-ek.)
-Image preview (Képek előnézete a kódban.)
-IntelliCode (Okosabb kódkiegészítés Microsofttól.)
-IntelliCode API Usage Examples(Okosabb kódkiegészítés Microsofttól.)
-JavaScript (ES6) code snippets (Hotkey, pl.: clg)
-Live Sass Compiler (SCSS → CSS automatikus fordítás.) Hogyan használd? https://youtu.be/eLmyLg2TcHc?si=fm0GC8UI4KZvHvDu&t=594
-Live Server!
-npm Intellisense (NPM csomagnevek automatikus kiegészítése.)!
-Playwright Test for VSCode (Webtesztek futtatása Playwrighttal.)
-Prettier - Code formatter!
-Project Manager!
-Quokka.js (Azonnal futtatja a JavaScript kódot, még mentés nélkül. De nem működik megfelelően a Ctrl+space)
-Restore Terminals
-Markdown All in One (Markdown fájl szerkesztéshez, tartalomjegyzék létrehozáshoz stb.)
-Csak dizájn, kinézet:
+Angular Language Service (Segít Angular projektekben: hibák, kódkiegészítés, IntelliSense.)         
+Angular Snippets (Version 18) (Kész Angular kódrészletek (ngFor, ngIf, component stb.).)                
+Auto Close Tag!              
+Auto Rename Tag!            
+Bookmarks (Kódrészek megjelölése könyvjelzőként → gyorsabb navigálás.)      
+Bootstrap 4, Font awesome 4, Font Awesome 5 Free (Gyors Bootstrap és ikon beillesztés.)     
+Bootstrap 5 Quick Snippets (Gyors Bootstrap és ikon beillesztés.)           
+Black Formatter (Python kódformázó.)            
+Bracket Pair Color DLW (Beszínezi az egyező {} [] () párokat.)      
+Code Spell Checker (Ellenőrzi a helyesírást kódban (pl. elgépelések változónévben).) !      
+CodeSnap (Kódrészletből szép képet készít.)     
+Colorful Comments (A kommenteket színesebbé teszi (// TODO, // WARNING).)!      
+Todo Tree (A TODO-kat gyűjti össze az adott projektben.)        
+Color Highlight (A CSS színeket kiemeli.)       
+Copy Relative Path (Gyors másolása a fájl relatív elérési útvonalának.)     
+CSS Peek (Ctrl+katt megmutatja, melyik CSS szabály vonatkozik az elemre.)!      
+css-auto-prefix (Sok régi böngésző nem támogatja a modern css-t. Emiatt érdemes ezt letölteni.)     
+ESLint (JavaScript hibakereső és szabály-ellenőrző.)            
+Formatting Toggle (Ki/be kapcsolja a kódformázót (pl. Prettier).)           
+Git History(Megmutatja a régi commitokat.)      
+Git Project Manager (Projektkezelés Git-tel.)       
+GitHub Copilot (A kódon belül segít neked, ne használd.)        
+GitHub Copilot Chat (Ne használd.)      
+GitHub Pull Requests (GitHub PR-ek kezelése.)       
+GitLens - Git supercharged (Mindenre jó a Gitben: ki írta a sort, mikor, változások, diff-ek.)      
+Image preview (Képek előnézete a kódban.)       
+IntelliCode (Okosabb kódkiegészítés Microsofttól.)      
+IntelliCode API Usage Examples(Okosabb kódkiegészítés Microsofttól.)        
+JavaScript (ES6) code snippets (Hotkey, pl.: clg)           
+Live Sass Compiler (SCSS → CSS automatikus fordítás.) Hogyan használd? https://youtu.be/eLmyLg2TcHc?si=fm0GC8UI4KZvHvDu&t=594       
+Live Server!        
+npm Intellisense (NPM csomagnevek automatikus kiegészítése.)!       
+Playwright Test for VSCode (Webtesztek futtatása Playwrighttal.)        
+Prettier - Code formatter!      
+Project Manager!        
+Quokka.js (Azonnal futtatja a JavaScript kódot, még mentés nélkül. De nem működik megfelelően a Ctrl+space)     
+Restore Terminals       
+Markdown All in One (Markdown fájl szerkesztéshez, tartalomjegyzék létrehozáshoz stb.)      
+Csak dizájn, kinézet:       
 
-One Dark Pro!
-Material Icon Theme!
-Power Mode Plus (Animációk gépelés közben. Csak szórakozás.) Az adatlapján menj a fogaskerékre -> Powermode:Enabled.
-freeCodeCamp Dark Theme
-One Monokai Theme
+One Dark Pro!       
+Material Icon Theme!        
+Power Mode Plus (Animációk gépelés közben. Csak szórakozás.) Az adatlapján menj a fogaskerékre ->   Powermode:Enabled.      
+freeCodeCamp Dark Theme     
+One Monokai Theme           
 
-Java programozáshoz
+Java programozáshoz     
 
-Debugger for Java
-Extension Pack for Java
-Gradle for Java
-Java
-Java Red Hat
-Maven for Java
-Mizu Icons (Dizájn!)
-Project Manager for Java
-Spring Boot Dahboard
-Test Runner for Java
+Debugger for Java       
+Extension Pack for Java     
+Gradle for Java 
+Java        
+Java Red Hat        
+Maven for Java          
+Mizu Icons (Dizájn!)        
+Project Manager for Java        
+Spring Boot Dahboard        
+Test Runner for Java        
 
 # HTML
 
@@ -822,13 +822,13 @@ A folytatáshoz bal oldalt válaszd ki a javascript fejezetet.
 
 # Felhasznált források és ajánlott linkek 
 
-SanFranciscoboljöttem.com - Blog és kurzusok https://sanfranciscoboljottem.com
-SZTE - Java Objektumok és Osztályok https://okt.inf.szte.hu/prog1/gyakorlat/eloadas/Java/objectsAndClasses/
+SanFranciscoboljöttem.com - Blog és kurzusok https://sanfranciscoboljottem.com      
+SZTE - Java Objektumok és Osztályok https://okt.inf.szte.hu/prog1/gyakorlat/eloadas/Java/objectsAndClasses/     
 
-YouTube - Fullstack Tutorial sorozat https://www.youtube.com/watch?v=8qMi3e_fzKc&list=PL92V_WHHt2CnXaUIA9T2ww7peDK4lqmZj
+YouTube - Fullstack Tutorial sorozat https://www.youtube.com/watch?v=8qMi3e_fzKc&list=PL92V_WHHt2CnXaUIA9T2ww7peDK4lqmZj        
 
 
-IT Szótár - Mi az a JVM? https://itszotar.hu/jvm-java-virtualis-gep-mi-a-mukodese-es-mi-a-szerepe-a-java-kod-futtatasaban/
+IT Szótár - Mi az a JVM? https://itszotar.hu/       jvm-java-virtualis-gep-mi-a-mukodese-es-mi-a-szerepe-a-java-kod-futtatasaban/       
 
 The Complete JavaScript Course 2025: From Zero to Expert!
 https://www.udemy.com/course/the-complete-javascript-course/

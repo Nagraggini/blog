@@ -60,6 +60,8 @@ A Selenium IDE saját nyelve/parancskészlete.
 Egyszerű parancsokat használ, pl.: open, click, type, verifyText
 Támogat kommenteket is (pl. // jellel).
 
+A Selenium Webdriver használatóról a gyakorlásaimat és jegyzeteimet [itt](https://github.com/Nagraggini/selenium-playground) találod.
+
 # QA (tesztautomatizálás)
 
 **Manuális vs automatizált tesztelés**
