@@ -1,4 +1,4 @@
-# Előkészületek
+# Új webes projekt létrehozása közepesszint - Előkészületek
 
 Gyors gombok:
 A terminálból másolni ctrl+shift+c és beilleszteni a ctrl+shift+v .

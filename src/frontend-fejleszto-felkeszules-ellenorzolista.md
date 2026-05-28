@@ -1,5 +1,7 @@
 <!--TODO -->
-# Tematika
+# Frontend fejlesztő felkészüléshez való ellenőrző lista
+
+## Tematika
 
 Gyakorlati, célzott lista, amit érdemes megtanulnod, ha frontend-es akarsz lenni. A lista a legfontosabb és leggyakrabban elvárt készségeket tartalmazza, sorrendben, hogy könnyebb legyen haladni:
 

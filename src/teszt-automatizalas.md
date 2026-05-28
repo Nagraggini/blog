@@ -62,6 +62,10 @@ Támogat kommenteket is (pl. // jellel).
 
 A Selenium Webdriver használatóról a gyakorlásaimat és jegyzeteimet [itt](https://github.com/Nagraggini/selenium-playground) találod.
 
+További projektjeim:
+[sauce-demo](https://github.com/Nagraggini/sauce-demo)
+[automation-exercise](https://github.com/Nagraggini/automation-exercise)
+
 # QA (tesztautomatizálás)
 
 **Manuális vs automatizált tesztelés**

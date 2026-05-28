@@ -1,3 +1,5 @@
+# Motiváció
+
 A legtöbb akadály mentális. Egyszerűen csak el kell kezdeni. Problémákat kell megoldani. Meg kell nézni, hogy mi mit csinál. Mi mire jó, egy idő után össze fog állni a kép.
 Fontos, hogy projekt alapon tanulj.
 

@@ -294,6 +294,7 @@ Automatizált build – a kód lefordítása, tesztek futtatása.
 Release (kiadás) – a kész szoftver telepítése teszt vagy éles környezetbe.
 Tesztelés – manuális és automatizált tesztek kezelése.
  Software development models
+
 9.1.3 Fő részei (moduljai)
 Azure Boards
 Feladatkezelő rendszer.
@@ -319,11 +320,13 @@ A fejlesztő a Repos-ban dolgozik a kódon, commitol, pushol.
 A Pipelines automatikusan buildel és tesztel.
 A sikeres build után Release Pipeline telepíti a kódot.
 A tesztelők a Test Plans-ben rögzítik a hibákat, amiket visszadobnak a fejlesztőknek.
+
 9.1.5 Miért jó?
 Átlátható – mindenki látja, mi történik.
 Automatizált – nem kell kézzel telepítgetni vagy fordítani.
 Biztonságos – verziókezelés, jogosultságok, naplózás.
 Rugalmas – kisebb és nagyobb csapatoknak is működik.
+
 9.2 Alapfogalmak, kifejezések
 A DevOps alapfogalmak és kulcselemek a következők:
 Folyamatos integráció (CI): A fejlesztés során a kód változtatásait rendszeresen egy közös tárba integrálják, automatikus teszteléssel biztosítva a minőséget.
@@ -338,8 +341,9 @@ Előnyt adó extra dolgok (ha időd van):
 Automatizált tesztelés: Pl. Selenium vagy Postman (API-teszt).
 Microsoft DevOps Server: Feladatok, build pipeline-ok alapja.
 Alap rádió/telekommunikációs fogalmak (ha a cég profilja érinti).
-Vissza
-Források
+
+# Források
+
 📄 ISTQB-CTFL Syllabus 4.0 (magyar, PDF)
 📝 Saját jegyzetek, melyeket a Ruander junior szoftvertesztelői tanfolyamon készítettem.
 ▶️ YouTube: Hálózati alapismeretek playlist https://www.youtube.com/watch?v=x75rST1j2Oc&list=PLih210Tv6IOTG2SCA9W6zOPyE21k4t86a
