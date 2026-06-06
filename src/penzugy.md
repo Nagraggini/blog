@@ -3,6 +3,7 @@
 # Hasznos linkek
 
 https://vaslevi.hu/kisokos
+https://www.justetf.com/en/search.html?search=ETFS
 
 # Revolut
 
