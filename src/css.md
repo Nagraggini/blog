@@ -19,11 +19,12 @@
 - [Tailwind telepítése:](#tailwind-telepítése)
 
 # Forrásaim
-https://www.w3schools.com/css/default.asp
-https://www.w3schools.com/htmlcss/default.asp
-[100+ Web Development Things you Should Know](https://youtu.be/erEgovG9WBs?si=vEFXO3P_WufyaR-C)
-[HTML & CSS for Absolute Beginners](https://www.youtube.com/playlist?list=PL4-IK0AVhVjOJs_UjdQeyEZ_cmEV3uJvx)
-http://www.flexboxdefense.com/
+https://www.w3schools.com/css/default.asp     
+https://www.w3schools.com/htmlcss/default.asp     
+[100+ Web Development Things you Should Know](https://youtu.be/erEgovG9WBs?si=vEFXO3P_WufyaR-C)     
+[HTML & CSS for Absolute Beginners](https://www.youtube.com/playlist?list=PL4-IK0AVhVjOJs_UjdQeyEZ_cmEV3uJvx)     
+http://www.flexboxdefense.com/      
+https://flukeout.github.io/       
 
 # Alapok
 
@@ -36,6 +37,8 @@ A tartalmakhoz adunk stílust a css-el. Bizonyos korlátokon belül lehet némi 
 Ezekkel játékosan meg lehet tanulni a CSS használatát: 
 https://flexboxfroggy.com/#hu
 https://cssgridgarden.com/#hu
+http://www.flexboxdefense.com/           
+https://flukeout.github.io/              
 
 [Itt](https://codepen.io/) tudsz gyakorolni.
 CSS magyarázatok és interaktív példákat [itt](https://www.w3schools.com/css/default.asp) találsz, valamint [itt](https://www.w3schools.com/htmlcss/default.asp).
