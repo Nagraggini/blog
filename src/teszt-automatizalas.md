@@ -13,6 +13,10 @@ Automatizált Teszt Keretrendszer (ATF)
 [API tesztelés videókurzus](https://www.youtube.com/watch?v=hvSlWnLiK_U&list=PLimzEeSv6f4Vk6cXGpoGU2ZhNcyI5rzTp)        
 [UI test playground (the internet)](https://the-internet.herokuapp.com/)
 [UI Test Automation Playground](http://www.uitestingplayground.com/)
+[Automation Exercise (UI and Api test)](https://automationexercise.com/)
+[Api test](https://app.reqres.in/)
+[Demo webshop](https://demowebshop.tricentis.com/)
+
 
 ## Selenium
 
