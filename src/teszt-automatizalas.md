@@ -7,7 +7,7 @@ Cypress (frontend fókuszú)
 Ranorex  -Az oldala kifejetezzen segít: support.ranorex.com + (Udemy)
 Automatizált Teszt Keretrendszer (ATF)
 
-# Források
+# Weboldalak, amiket lehet tesztelni
 
 [Utest.com](https://www.utest.com/resources)            
 [API tesztelés videókurzus](https://www.youtube.com/watch?v=hvSlWnLiK_U&list=PLimzEeSv6f4Vk6cXGpoGU2ZhNcyI5rzTp)        
@@ -16,7 +16,8 @@ Automatizált Teszt Keretrendszer (ATF)
 [Automation Exercise (UI and Api test)](https://automationexercise.com/)
 [Api test](https://app.reqres.in/)
 [Demo webshop](https://demowebshop.tricentis.com/)
-
+[Bank fiók ](https://parabank.parasoft.com/)
+[HR-szoftver](https://opensource-demo.orangehrmlive.com/)
 
 ## Selenium
 
