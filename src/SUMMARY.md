@@ -18,7 +18,7 @@
 
 ## Speciális Ismeretek
 - [Kiberbiztonság](kiberbiztonsag.md)
-- [Pénzügyi ismeretek](penzugy.md)
+- [Pénzügyi ismeretek (A fejezetben lesz szó a Rest API-s tőzsdei kereskedésről)](penzugy.md)
 - [Angol nyelvtanulás](english-learning.md)
 
 ## Projekt és Karrier

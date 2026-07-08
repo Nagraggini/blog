@@ -1,4 +1,4 @@
-# Pénzügyi ismeretek
+# Pénzügyi ismeretek (A fejezetben lesz szó a Rest API-s tőzsdei kereskedésről)
 
 # Hasznos linkek
 
@@ -177,4 +177,20 @@ MÁK = Magyar Állam Kincstár
 https://bankszamlavalaszto.mnb.hu/
 
 Egészpénztár megtakarítás szja-ban 20 %ot visszakapsz. Vigyázni kell vele, mert van havidíj és nem az egész befizetés megy számlára, levonják a kezelési költséget.
+
+# Rest API-s tőzsdei kereskedés
+
+Paper Trading teszt fiókon tesztelj például az Interactive Brokers-en belül tudsz létrehozni ilyet. 
+[How to Set Up a Paper Trading Account on Interactive Brokers](https://www.youtube.com/watch?v=M4KdV-uzrrs)
+
+Utána az IB Gateway appon keresztül tudsz a tőzsdén kereskedni. 
+[IB Gateway letöltése](https://www.interactivebrokers.com/en/trading/ibgateway-latest.php)
+
+Terminálban navigálj el a telepítő fájlig. Után ezt írd be: chmod +x ibgateway-latest-standalone-linux-x64.sh
+Ezzel adsz jogosultságot.
+Telepítés elindítása:
+./ibgateway-latest-standalone-linux-x64.sh
+
+
+https://www.interactivebrokers.com/en/trading/ib-api.php
 
