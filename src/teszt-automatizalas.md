@@ -134,5 +134,6 @@ CD (Continuous Delivery/Deployment):
   
 # REST API tesztelés
 
+[REST Assured Beginner Tutorial](https://www.youtube.com/watch?v=vgMyJhrMV0o&list=PLhW3qG5bs-L8xPrBwDv66cTMlFNeUPdJx&index=5)
 
-https://www.youtube.com/watch?v=vgMyJhrMV0o&list=PLhW3qG5bs-L8xPrBwDv66cTMlFNeUPdJx&index=5
+[Itt](https://github.com/Nagraggini/petstore) találod a REST API-s projektemet, benne magyarázattal. 

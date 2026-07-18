@@ -169,6 +169,7 @@ eSZJA felületén keress rá bal oldalt a 19-re.
 # Biztosítások
 
 https://www.biztositas.hu/
+https://bank360.hu/utasbiztositas/ajanlatok
 
 # Bank
 
