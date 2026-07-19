@@ -382,8 +382,17 @@ Nem gond, ha elsőnek spagetti kódot csinálsz a lényeg, hogy kódolj és ne c
 * [Meetup](https://www.meetup.com/)  
   IT meetupok és fejlesztői események.
 
-* [Major League Hacking](https://mlh.io/)  
+* [LeetCode](https://leetcode.com/)
+  Algoritmus gyakorlás, állásinterjú feladatok.
+
+* [Major League Hacking](https://mlh.com/)  
   Hackathonok és fejlesztői események.
+
+* [DEV](https://dev.to/)
+  Blogolás, tanulás, tapasztalatcsere.
+
+* [Hacker Rank](https://www.hackerrank.com/)
+  Algoritmus gyakorlás, állásinterjú feladatok.
 
 ---
 
@@ -399,3 +408,9 @@ Nem gond, ha elsőnek spagetti kódot csinálsz a lényeg, hogy kódolj és ne c
 # Könyv repository
 
 A könyvem repoját [itt](https://github.com/Nagraggini/my-awesome-book) találod.
+
+# Author
+
+Készítette: [Nagraggini](https://github.com/Nagraggini)
+
+Ez az útmutató egy gyűjtemény a fejlesztői tanulmányokhoz, karrierépítéshez és az eszközök hatékony használatához.
