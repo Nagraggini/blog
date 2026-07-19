@@ -1,0 +1,276 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Teszt automatizálás - Útmutató kezdőtől haladó szintig a programozáshoz</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme -->
+        
+
+        
+
+        <!-- Fetch Clipboard.js from CDN but have a local fallback -->
+        <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.1/clipboard.min.js"></script>
+        <script>
+            if (typeof Clipboard == 'undefined') {
+                document.write(unescape("%3Cscript src='clipboard.min.js'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <!-- Fetch store.js from local - TODO add CDN when 2.x.x is available on cdnjs -->
+        <script src="store.js"></script>
+
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = store.get('mdbook-theme');
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = store.get('mdbook-sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li class="affix"><a href="README.html">Bevezető</a></li><li><a href="webfejlesztes-alapok.html"><strong>1.</strong> Webfejlesztés alapok</a></li><li><a href="html.html"><strong>2.</strong> HTML alapok</a></li><li><a href="css.html"><strong>3.</strong> CSS alapok</a></li><li><a href="javascript.html"><strong>4.</strong> JavaScript ismeretek</a></li><li><a href="uj-webes-projekt-letrehozasa-kozepszint.html"><strong>5.</strong> Automatizált webes projekt létrehozása - középhaladó szint</a></li><li><a href="frontend-fejleszto-felkeszules-ellenorzolista.html"><strong>6.</strong> Frontend Fejlesztő Checklista</a></li><li><a href="java.html"><strong>7.</strong> Java nyelv</a></li><li><a href="teszt-automatizalas.html" class="active"><strong>8.</strong> Teszt automatizálás</a></li><li><a href="java-unit-test.html"><strong>9.</strong> Java Unit Teszt</a></li><li><a href="playwright-hasznalata.html"><strong>10.</strong> Playwright</a></li><li><a href="spring-boot-bevezetese.html"><strong>11.</strong> Spring Boot</a></li><li><a href="kiberbiztonsag.html"><strong>12.</strong> Kiberbiztonság</a></li><li><a href="penzugy.html"><strong>13.</strong> Pénzügyi ismeretek (A fejezetben lesz szó a Rest API-s tőzsdei kereskedésről)</a></li><li><a href="english-learning.html"><strong>14.</strong> Angol nyelvtanulás</a></li><li><a href="mappa-struktura-es-github.html"><strong>15.</strong> Mappa struktúra és GitHub</a></li><li><a href="webfejlesztes-attekintes.html"><strong>16.</strong> Webfejlesztés áttekintés</a></li><li><a href="motivacio.html"><strong>17.</strong> Motiváció</a></li><li><a href="projekt-otletek.html"><strong>18.</strong> Projekt ötletek</a></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page" tabindex="-1">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars" title="Toggle sidebar"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush" title="Change theme"></i>
+                    </div>
+
+                    <h1 class="menu-title">Útmutató kezdőtől haladó szintig a programozáshoz</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html">
+                            <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="teszt-automatizalas.html#teszt-automatizálás" id="teszt-automatizálás"><h1>Teszt automatizálás</h1></a>
+<p><strong>Ezeket használják manapság</strong></p>
+<p>Playwright (nagyon modern, Udemy-n jó kurzusok vannak)
+Cypress (frontend fókuszú)
+Ranorex  -Az oldala kifejetezzen segít: support.ranorex.com + (Udemy)
+Automatizált Teszt Keretrendszer (ATF)</p>
+<a class="header" href="teszt-automatizalas.html#weboldalak-amiket-lehet-tesztelni" id="weboldalak-amiket-lehet-tesztelni"><h1>Weboldalak, amiket lehet tesztelni</h1></a>
+<p><a href="https://www.utest.com/resources">Utest.com</a><br />
+<a href="https://www.youtube.com/watch?v=hvSlWnLiK_U&amp;list=PLimzEeSv6f4Vk6cXGpoGU2ZhNcyI5rzTp">API tesztelés videókurzus</a><br />
+<a href="https://the-internet.herokuapp.com/">UI test playground (the internet)</a>
+<a href="http://www.uitestingplayground.com/">UI Test Automation Playground</a>
+<a href="https://automationexercise.com/">Automation Exercise (UI and Api test)</a>
+<a href="https://app.reqres.in/">Api test</a>
+<a href="https://demowebshop.tricentis.com/">Demo webshop</a>
+<a href="https://parabank.parasoft.com/">Bank fiók </a>
+<a href="https://opensource-demo.orangehrmlive.com/">HR-szoftver</a></p>
+<a class="header" href="teszt-automatizalas.html#selenium" id="selenium"><h2>Selenium</h2></a>
+<p>A Selenium-ot érdemes először kezdőként használni és után tovább menni a bonyolultabbak felé.</p>
+<a class="header" href="teszt-automatizalas.html#selenium-alapfogalmak" id="selenium-alapfogalmak"><h3>Selenium alapfogalmak</h3></a>
+<p><strong>Selenium WebDriver</strong></p>
+<ul>
+<li>Programozható tesztautomatizálási eszköz.</li>
+<li>Támogatja a legtöbb böngészőt (Chrome, Firefox, Edge stb.).</li>
+<li>Több nyelven is használható: Java, Python, C#, JavaScript stb.</li>
+<li>Fejlesztők és tesztelők írhatnak benne automatizált funkcionális/regressziós teszteket.</li>
+</ul>
+<p><strong>Selenium Grid</strong></p>
+<ul>
+<li>Lehetővé teszi a párhuzamos tesztfuttatást több gépen és böngészőn.</li>
+<li>Hasznos, ha sok tesztet kell rövid idő alatt lefuttatni.</li>
+<li>Két fő része van:
+Hub: Központ, ami elosztja a feladatokat.
+Node-ok: A gépek, ahol a tesztek ténylegesen futnak.</li>
+</ul>
+<p>Selenium tesztek típusai</p>
+<ol>
+<li>
+<p>Rögzítés és visszajátszás (Record &amp; Playback)</p>
+</li>
+</ol>
+<ul>
+<li>Ezt a funkciót a Selenium IDE biztosítja.</li>
+<li>A felhasználói műveleteket automatikusan rögzíti (kattintás, beírás, navigáció stb.).</li>
+<li>Utána visszajátszható, így gyorsan lehet egyszerű teszteket készíteni.</li>
+<li>Nem igényel programozási tudást, de kevésbé rugalmas.</li>
+</ul>
+<ol start="2">
+<li>
+<p>Programozott tesztelés (WebDriver)</p>
+</li>
+</ol>
+<ul>
+<li>Itt kódban írjuk meg a teszteket.</li>
+<li>Rugalmas, skálázható, integrálható CI/CD folyamatokba (pl. Jenkins).</li>
+</ul>
+<p>Assert -&gt; Ha a feltétel nem teljesül, a teszt megáll. -&gt; Kritikus ellenőrzésekhez
+Verify -&gt; Ha a feltétel nem teljesül, a teszt tovább fut, de jelzi a hibát. -&gt; Nem kritikus hibákhoz</p>
+<p><strong>Selenese</strong></p>
+<p>A Selenium IDE saját nyelve/parancskészlete.
+Egyszerű parancsokat használ, pl.: open, click, type, verifyText
+Támogat kommenteket is (pl. // jellel).</p>
+<p>A Selenium Webdriver használatóról a gyakorlásaimat és jegyzeteimet <a href="https://github.com/Nagraggini/selenium-playground">itt</a> találod.</p>
+<p>További projektjeim:
+<a href="https://github.com/Nagraggini/sauce-demo">sauce-demo</a>
+<a href="https://github.com/Nagraggini/automation-exercise">automation-exercise</a></p>
+<a class="header" href="teszt-automatizalas.html#qa-tesztautomatizálás" id="qa-tesztautomatizálás"><h1>QA (tesztautomatizálás)</h1></a>
+<p><strong>Manuális vs automatizált tesztelés</strong></p>
+<p>Manuális tesztelés:</p>
+<ul>
+<li>UX/UI, kinézet, felhasználói élmény</li>
+<li>ad-hoc / exploratory tesztelés</li>
+<li>gyors validáció új feature-re</li>
+</ul>
+<p>Automatizált tesztelés:</p>
+<ul>
+<li>ismétlődő tesztek (regresszió)</li>
+<li>stabil funkciók ellenőrzése</li>
+<li>gyors visszajelzés CI-ben</li>
+<li>UI-t is lehet automatizálni</li>
+</ul>
+<p>Fontos<br />
+➡️ amit sokszor futtatsz → automatizáld</p>
+<p><strong>Framework felépítése</strong></p>
+<p>Test layer – maga a teszt (JUnit/TestNG).<br />
+Page Object Model (POM) – UI elemek és műveletek külön osztályokban.
+Ha változik a HTML, nem kell minden tesztet átírni, csak ezt az egy osztályt.<br />
+Utility réteg – pl. wait-ek, config, logger.<br />
+Ez az újrahasznosítható segédkód.
+Driver kezelés – WebDriver setup/teardown.<br />
+Böngésző indítása és leállítása.</p>
+<p>👉 Példa stack:</p>
+<p>Java + JUnit/TestNG<br />
+Selenium<br />
+Maven/Gradle</p>
+<p><strong>CI/CD</strong></p>
+<p>CI (Continuous Integration):<br />
+minden commit után build + teszt fut</p>
+<p>CD (Continuous Delivery/Deployment):<br />
+automatikus release pipeline</p>
+<p>👉 Kapcsolat:
+automatizált tesztek a pipeline részei
+ha teszt fail → build fail</p>
+<p><strong>Az automatizált tesztelésben gyakran ezek a teszttípusok jönnek elő:</strong></p>
+<ul>
+<li>Unit teszt – egy kis egységet vizsgál, például egy metódust vagy osztályt.</li>
+<li>Integration teszt – több komponens együttműködését ellenőrzi.</li>
+<li>End-to-End (E2E) teszt – teljes felhasználói folyamatot vizsgál elejétől végéig.</li>
+<li>Regression teszt – azt ellenőrzi, hogy egy módosítás nem rontott-e el korábban működő funkciókat.</li>
+<li>Smoke teszt – gyors alapellenőrzés, hogy a rendszer fő funkciói működnek-e.</li>
+<li>Sanity teszt – kisebb módosítás után célzott ellenőrzés, hogy az adott javítás rendben van-e.</li>
+<li>UI teszt – felhasználói felület elemeinek működése és megjelenése.</li>
+<li>API teszt – backend szolgáltatások, végpontok, request/response ellenőrzése.</li>
+<li>Performance teszt – sebesség, válaszidő, terhelhetőség vizsgálata.</li>
+<li>Load teszt – normál vagy nagy terhelés alatti viselkedés.</li>
+<li>Security teszt – jogosultságok, adatvédelem, sebezhetőségek vizsgálata.</li>
+<li>Acceptance teszt (UAT) – annak ellenőrzése, hogy az üzleti igények teljesülnek-e.</li>
+</ul>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a rel="prev" href="java.html" class="mobile-nav-chapters previous" title="Previous chapter">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="java-unit-test.html" class="mobile-nav-chapters next" title="Next chapter">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="java.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="java-unit-test.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+    <script type="text/javascript">
+        var socket = new WebSocket("ws://localhost:3001");
+        socket.onmessage = function (event) {
+            if (event.data === "reload") {
+                socket.close();
+                location.reload(true); // force reload from server (not from cache)
+            }
+        };
+
+        window.onbeforeunload = function() {
+            socket.close();
+        }
+    </script>
+
+
+        
+
+        
+
+        
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS script -->
+        
+
+    </body>
+</html>

@@ -63,7 +63,7 @@
         </script>
 
         <div id="sidebar" class="sidebar">
-            <ul class="chapter"><li class="affix"><a href="README.html">Bevezető</a></li><li><a href="webfejlesztes-alapok.html"><strong>1.</strong> Webfejlesztés alapok</a></li><li><a href="html.html"><strong>2.</strong> HTML alapok</a></li><li><a href="css.html"><strong>3.</strong> CSS alapok</a></li><li><a href="javascript.html"><strong>4.</strong> JavaScript ismeretek</a></li><li><a href="uj-webes-projekt-letrehozasa-kozepszint.html"><strong>5.</strong> Automatizált webes projekt létrehozása - középhaladó szint</a></li><li><a href="frontend-fejleszto-felkeszules-ellenorzolista.html"><strong>6.</strong> Frontend Fejlesztő Checklista</a></li><li><a href="java.html" class="active"><strong>7.</strong> Java nyelv</a></li><li><a href="playwright-hasznalata.html"><strong>8.</strong> Playwright</a></li><li><a href="spring-boot-bevezetese.html"><strong>9.</strong> Spring Boot</a></li><li><a href="kiberbiztonsag.html"><strong>10.</strong> Kiberbiztonság</a></li><li><a href="penzugy.html"><strong>11.</strong> Pénzügyi ismeretek</a></li><li><a href="english-learning.html"><strong>12.</strong> Angol nyelvtanulás</a></li><li><a href="mappa-struktura-es-github.html"><strong>13.</strong> Mappa struktúra és GitHub</a></li><li><a href="webfejlesztes-attekintes.html"><strong>14.</strong> Webfejlesztés áttekintés</a></li><li><a href="motivacio.html"><strong>15.</strong> Motiváció</a></li><li><a href="projekt-otletek.html"><strong>16.</strong> Projekt ötletek</a></li></ul>
+            <ul class="chapter"><li class="affix"><a href="README.html">Bevezető</a></li><li><a href="webfejlesztes-alapok.html"><strong>1.</strong> Webfejlesztés alapok</a></li><li><a href="html.html"><strong>2.</strong> HTML alapok</a></li><li><a href="css.html"><strong>3.</strong> CSS alapok</a></li><li><a href="javascript.html"><strong>4.</strong> JavaScript ismeretek</a></li><li><a href="uj-webes-projekt-letrehozasa-kozepszint.html"><strong>5.</strong> Automatizált webes projekt létrehozása - középhaladó szint</a></li><li><a href="frontend-fejleszto-felkeszules-ellenorzolista.html"><strong>6.</strong> Frontend Fejlesztő Checklista</a></li><li><a href="java.html" class="active"><strong>7.</strong> Java nyelv</a></li><li><a href="teszt-automatizalas.html"><strong>8.</strong> Teszt automatizálás</a></li><li><a href="java-unit-test.html"><strong>9.</strong> Java Unit Teszt</a></li><li><a href="playwright-hasznalata.html"><strong>10.</strong> Playwright</a></li><li><a href="spring-boot-bevezetese.html"><strong>11.</strong> Spring Boot</a></li><li><a href="kiberbiztonsag.html"><strong>12.</strong> Kiberbiztonság</a></li><li><a href="penzugy.html"><strong>13.</strong> Pénzügyi ismeretek (A fejezetben lesz szó a Rest API-s tőzsdei kereskedésről)</a></li><li><a href="english-learning.html"><strong>14.</strong> Angol nyelvtanulás</a></li><li><a href="mappa-struktura-es-github.html"><strong>15.</strong> Mappa struktúra és GitHub</a></li><li><a href="webfejlesztes-attekintes.html"><strong>16.</strong> Webfejlesztés áttekintés</a></li><li><a href="motivacio.html"><strong>17.</strong> Motiváció</a></li><li><a href="projekt-otletek.html"><strong>18.</strong> Projekt ötletek</a></li></ul>
         </div>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -331,6 +331,7 @@
 </li>
 <li><a href="java.html#java-p%C3%A9ld%C3%A1k-%C3%A9s-magyar%C3%A1zatok">Java Példák és Magyarázatok</a>
 <ul>
+<li><a href="java.html#%C3%B6sszehasonl%C3%ADt%C3%A1s-lambda-vs-met%C3%B3dusreferencia">Összehasonlítás: Lambda vs. Metódusreferencia</a></li>
 <li><a href="java.html#1-f%C3%A1jlbeolvas%C3%A1s">1. Fájlbeolvasás</a></li>
 <li><a href="java.html#2-f%C3%A1jlki%C3%ADr%C3%A1s">2. Fájlkiírás</a></li>
 <li><a href="java.html#3-stream-m%C5%B1veletek">3. Stream műveletek</a></li>
@@ -504,19 +505,19 @@ A .class fájlokat gyakran .jar (Java Archive) fájlba csomagolják, ami több c
 </ul>
 <p>A bytecode mindenhol ugyanaz marad.</p>
 <p><strong>Java környezet komponensei</strong></p>
-<p>JDK – Java Development Kit</p>
+<p>JDK – Java Development Kit (Program írása + futtatása)</p>
 <p>A JDK a Java fejlesztéshez szükséges teljes eszközkészlet.</p>
 <p>Tartalmazza:</p>
 <ul>
 <li>javac (fordító)</li>
-<li>JRE</li>
+<li>JRE (Program futtatása)</li>
 <li>fejlesztői eszközök</li>
 </ul>
 <p><strong>JRE – Java Runtime Environment</strong></p>
 <p>A JRE a Java programok futtatásához szükséges környezet.</p>
 <p>Tartalmazza:</p>
 <ul>
-<li>JVM</li>
+<li>JVM (A Java program futtatása)</li>
 <li>Java szabványos könyvtárak</li>
 </ul>
 <p><strong>JVM – Java Virtual Machine</strong></p>
@@ -1363,12 +1364,12 @@ System.out.println(today.format(formatter));
 | `ss`     | másodperc |
 </code></pre>
 <p><strong>Példa dátum + idő formázás</strong></p>
-<pre><code class="language-java">LocalDateTime now = LocalDateTime.now();
+<pre><code class="language-java">LocalDateTime most = LocalDateTime.now();
 
-DateTimeFormatter formatter =
+DateTimeFormatter datumFormazas =
         DateTimeFormatter.ofPattern(&quot;yyyy.MM.dd HH:mm&quot;);
 
-System.out.println(now.format(formatter));
+System.out.println(most.format(datumFormazas));
 </code></pre>
 <p>példa kimenet</p>
 <p>2026.03.15 18:45</p>
@@ -2359,6 +2360,11 @@ Tomcat v10.1 Server at localhost
 <p>Keresés/Szűrés/Statisztika: Használd a listát és a Stream API-t.</p>
 <p>Egyedi kulcsos keresés: Csak akkor készíts HashMap-et, ha a feladat kifejezetten kéri, hogy egy azonosító alapján keress ki valamit villámgyorsan.</p>
 <a class="header" href="java.html#java-példák-és-magyarázatok" id="java-példák-és-magyarázatok"><h1>Java Példák és Magyarázatok</h1></a>
+<a class="header" href="java.html#Összehasonlítás-lambda-vs-metódusreferencia" id="Összehasonlítás-lambda-vs-metódusreferencia"><h2>Összehasonlítás: Lambda vs. Metódusreferencia</h2></a>
+<p>Metódus referencia: Object::toString
+Nem kell átadni paramétert.</p>
+<p>Lambda: o -&gt; o.toString(elvalsztojel)
+Kell átadni paramétert.</p>
 <a class="header" href="java.html#1-fájlbeolvasás" id="1-fájlbeolvasás"><h2>1. Fájlbeolvasás</h2></a>
 <p>Egyszerű példa:</p>
 <pre><code class="language-java">  try {
@@ -3471,7 +3477,7 @@ Válaszd a &quot;Add Folder to Java Source Path&quot; lehetőséget (ha felkín�
                 
 
                 
-                    <a rel="next" href="playwright-hasznalata.html" class="mobile-nav-chapters next" title="Next chapter">
+                    <a rel="next" href="teszt-automatizalas.html" class="mobile-nav-chapters next" title="Next chapter">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -3485,7 +3491,7 @@ Válaszd a &quot;Add Folder to Java Source Path&quot; lehetőséget (ha felkín�
             
 
             
-                <a href="playwright-hasznalata.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                <a href="teszt-automatizalas.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
                     <i class="fa fa-angle-right"></i>
                 </a>
             

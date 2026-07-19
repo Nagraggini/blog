@@ -131,9 +131,4 @@ CD (Continuous Delivery/Deployment):
 - Load teszt – normál vagy nagy terhelés alatti viselkedés.
 - Security teszt – jogosultságok, adatvédelem, sebezhetőségek vizsgálata.
 - Acceptance teszt (UAT) – annak ellenőrzése, hogy az üzleti igények teljesülnek-e.
-  
-# REST API tesztelés
 
-[REST Assured Beginner Tutorial](https://www.youtube.com/watch?v=vgMyJhrMV0o&list=PLhW3qG5bs-L8xPrBwDv66cTMlFNeUPdJx&index=5)
-
-[Itt](https://github.com/Nagraggini/petstore) találod a REST API-s projektemet, benne magyarázattal. 

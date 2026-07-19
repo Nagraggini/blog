@@ -13,6 +13,7 @@
 - [Java nyelv](java.md)
 - [Teszt automatizálás](teszt-automatizalas.md)
 - [Java Unit Teszt](java-unit-test.md)
+- [REST Assured (REST API tesztelés)](rest-assured.md)
 - [Playwright](playwright-hasznalata.md)
 - [Spring Boot](spring-boot-bevezetese.md)
 

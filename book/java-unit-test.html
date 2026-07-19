@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Java Unit Teszt - Útmutató kezdőtől haladó szintig a programozáshoz</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme -->
+        
+
+        
+
+        <!-- Fetch Clipboard.js from CDN but have a local fallback -->
+        <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.1/clipboard.min.js"></script>
+        <script>
+            if (typeof Clipboard == 'undefined') {
+                document.write(unescape("%3Cscript src='clipboard.min.js'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <!-- Fetch store.js from local - TODO add CDN when 2.x.x is available on cdnjs -->
+        <script src="store.js"></script>
+
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = store.get('mdbook-theme');
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = store.get('mdbook-sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li class="affix"><a href="README.html">Bevezető</a></li><li><a href="webfejlesztes-alapok.html"><strong>1.</strong> Webfejlesztés alapok</a></li><li><a href="html.html"><strong>2.</strong> HTML alapok</a></li><li><a href="css.html"><strong>3.</strong> CSS alapok</a></li><li><a href="javascript.html"><strong>4.</strong> JavaScript ismeretek</a></li><li><a href="uj-webes-projekt-letrehozasa-kozepszint.html"><strong>5.</strong> Automatizált webes projekt létrehozása - középhaladó szint</a></li><li><a href="frontend-fejleszto-felkeszules-ellenorzolista.html"><strong>6.</strong> Frontend Fejlesztő Checklista</a></li><li><a href="java.html"><strong>7.</strong> Java nyelv</a></li><li><a href="teszt-automatizalas.html"><strong>8.</strong> Teszt automatizálás</a></li><li><a href="java-unit-test.html" class="active"><strong>9.</strong> Java Unit Teszt</a></li><li><a href="playwright-hasznalata.html"><strong>10.</strong> Playwright</a></li><li><a href="spring-boot-bevezetese.html"><strong>11.</strong> Spring Boot</a></li><li><a href="kiberbiztonsag.html"><strong>12.</strong> Kiberbiztonság</a></li><li><a href="penzugy.html"><strong>13.</strong> Pénzügyi ismeretek (A fejezetben lesz szó a Rest API-s tőzsdei kereskedésről)</a></li><li><a href="english-learning.html"><strong>14.</strong> Angol nyelvtanulás</a></li><li><a href="mappa-struktura-es-github.html"><strong>15.</strong> Mappa struktúra és GitHub</a></li><li><a href="webfejlesztes-attekintes.html"><strong>16.</strong> Webfejlesztés áttekintés</a></li><li><a href="motivacio.html"><strong>17.</strong> Motiváció</a></li><li><a href="projekt-otletek.html"><strong>18.</strong> Projekt ötletek</a></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page" tabindex="-1">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars" title="Toggle sidebar"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush" title="Change theme"></i>
+                    </div>
+
+                    <h1 class="menu-title">Útmutató kezdőtől haladó szintig a programozáshoz</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html">
+                            <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="java-unit-test.html#java-unit-teszt" id="java-unit-teszt"><h1>Java Unit Teszt</h1></a>
+<p>Ez az összefoglaló a Java beépített assert-jeit és a JUnit 5 tesztelési keretrendszer alapjait tartalmazza.</p>
+<hr />
+<a class="header" href="java-unit-test.html#1-java-native-assert-a-nyelv-része" id="1-java-native-assert-a-nyelv-része"><h2>1. Java Native Assert (A nyelv része)</h2></a>
+<p>Elsősorban fejlesztés alatti belső logikai ellenőrzésre.
+<em>Figyelem: Alapból ki van kapcsolva, a <code>-ea</code> (enable assertions) kapcsolóval kell futtatni a JVM-et.</em></p>
+<table><thead><tr><th align="left"> Szintaxis                     </th><th align="left"> Leírás                                          </th></tr></thead><tbody>
+<tr><td align="left"> <code>assert feltétel;</code>            </td><td align="left"> Ha a feltétel <code>false</code>, <code>AssertionError</code>-t dob.  </td></tr>
+<tr><td align="left"> <code>assert feltétel : &quot;Üzenet&quot;;</code> </td><td align="left"> Hiba esetén az üzenet is megjelenik a konzolon. </td></tr>
+</tbody></table>
+<hr />
+<a class="header" href="java-unit-test.html#2-junit-5-Életciklus-annotációk" id="2-junit-5-Életciklus-annotációk"><h2>2. JUnit 5 Életciklus (Annotációk)</h2></a>
+<p>Meghatározzák a metódusok futási sorrendjét a tesztelés során.</p>
+<table><thead><tr><th align="left"> Annotáció         </th><th> Típus         </th><th> Leírás                                                                        </th></tr></thead><tbody>
+<tr><td align="left"> <strong><code>@BeforeAll</code></strong>  </td><td align="left"> <code>static void</code> </td><td align="left"> <strong>Egyszer</strong> fut le az osztály összes tesztje előtt (pl. DB kapcsolat nyitás). </td></tr>
+<tr><td align="left"> <strong><code>@BeforeEach</code></strong> </td><td align="left"> <code>void</code>        </td><td align="left"> <strong>Minden</strong> <code>@Test</code> előtt lefut. Setup, példányosítás, alaphelyzet.            </td></tr>
+<tr><td align="left"> <strong><code>@Test</code></strong>       </td><td align="left"> <code>void</code>        </td><td align="left"> Maga a teszteset, itt fut le a vizsgált logika.                               </td></tr>
+<tr><td align="left"> <strong><code>@AfterEach</code></strong>  </td><td align="left"> <code>void</code>        </td><td align="left"> <strong>Minden</strong> <code>@Test</code> után lefut. Cleanup, cache ürítés, loggolás.               </td></tr>
+<tr><td align="left"> <strong><code>@AfterAll</code></strong>   </td><td align="left"> <code>static void</code> </td><td align="left"> <strong>Egyszer</strong> fut le a legvégén. Erőforrások (pl. DB) lezárása.                 </td></tr>
+</tbody></table>
+<hr />
+<a class="header" href="java-unit-test.html#3-alap-assert-ek-junit-5-assertions" id="3-alap-assert-ek-junit-5-assertions"><h2>3. Alap Assert-ek (JUnit 5 Assertions)</h2></a>
+<p>Ezekkel igazoljuk, hogy a kódunk a várt módon működik-e.</p>
+<table><thead><tr><th> Metódus                               </th><th> Ellenőrzés                           </th></tr></thead><tbody>
+<tr><td align="left"> <code>assertEquals(expected, actual)</code>      </td><td align="left"> A két érték megegyezik-e.            </td></tr>
+<tr><td align="left"> <code>assertNotEquals(unexpected, actual)</code> </td><td align="left"> A kapott érték eltér-e a megadottól. </td></tr>
+<tr><td align="left"> <code>assertTrue(condition)</code>               </td><td align="left"> A feltétel igaz-e.                   </td></tr>
+<tr><td align="left"> <code>assertFalse(condition)</code>              </td><td align="left"> A feltétel hamis-e.                  </td></tr>
+<tr><td align="left"> <code>assertNull(object)</code>                  </td><td align="left"> Az objektum <code>null</code> értékű-e.         </td></tr>
+<tr><td align="left"> <code>assertNotNull(object)</code>               </td><td align="left"> Az objektum létezik-e (nem <code>null</code>).  </td></tr>
+</tbody></table>
+<hr />
+<a class="header" href="java-unit-test.html#4-kivételkezelés-tesztelése-assertthrows" id="4-kivételkezelés-tesztelése-assertthrows"><h2>4. Kivételkezelés tesztelése: <code>assertThrows</code></h2></a>
+<p>Ellenőrzi, hogy a kódunk dob-e hiba esetén megfelelő kivételt.</p>
+<pre><code class="language-java">// A metódus visszatér a kapott kivétellel, amit tovább vizsgálhatunk
+Throwable exception = assertThrows(IllegalArgumentException.class, () -&gt; {
+    myObject.doSomething(-1);
+});
+
+// Opcionális: a hibaüzenet pontos ellenőrzése
+assertEquals(&quot;Negatív szám nem megengedett!&quot;, exception.getMessage());
+</code></pre>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a rel="prev" href="teszt-automatizalas.html" class="mobile-nav-chapters previous" title="Previous chapter">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="playwright-hasznalata.html" class="mobile-nav-chapters next" title="Next chapter">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="teszt-automatizalas.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="playwright-hasznalata.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+    <script type="text/javascript">
+        var socket = new WebSocket("ws://localhost:3001");
+        socket.onmessage = function (event) {
+            if (event.data === "reload") {
+                socket.close();
+                location.reload(true); // force reload from server (not from cache)
+            }
+        };
+
+        window.onbeforeunload = function() {
+            socket.close();
+        }
+    </script>
+
+
+        
+
+        
+
+        
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS script -->
+        
+
+    </body>
+</html>

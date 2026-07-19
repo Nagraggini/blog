@@ -63,7 +63,7 @@
         </script>
 
         <div id="sidebar" class="sidebar">
-            <ul class="chapter"><li class="affix"><a href="README.html">Bevezető</a></li><li><a href="webfejlesztes-alapok.html"><strong>1.</strong> Webfejlesztés alapok</a></li><li><a href="html.html" class="active"><strong>2.</strong> HTML alapok</a></li><li><a href="css.html"><strong>3.</strong> CSS alapok</a></li><li><a href="javascript.html"><strong>4.</strong> JavaScript ismeretek</a></li><li><a href="uj-webes-projekt-letrehozasa-kozepszint.html"><strong>5.</strong> Automatizált webes projekt létrehozása - középhaladó szint</a></li><li><a href="frontend-fejleszto-felkeszules-ellenorzolista.html"><strong>6.</strong> Frontend Fejlesztő Checklista</a></li><li><a href="java.html"><strong>7.</strong> Java nyelv</a></li><li><a href="playwright-hasznalata.html"><strong>8.</strong> Playwright</a></li><li><a href="spring-boot-bevezetese.html"><strong>9.</strong> Spring Boot</a></li><li><a href="kiberbiztonsag.html"><strong>10.</strong> Kiberbiztonság</a></li><li><a href="penzugy.html"><strong>11.</strong> Pénzügyi ismeretek</a></li><li><a href="english-learning.html"><strong>12.</strong> Angol nyelvtanulás</a></li><li><a href="mappa-struktura-es-github.html"><strong>13.</strong> Mappa struktúra és GitHub</a></li><li><a href="webfejlesztes-attekintes.html"><strong>14.</strong> Webfejlesztés áttekintés</a></li><li><a href="motivacio.html"><strong>15.</strong> Motiváció</a></li><li><a href="projekt-otletek.html"><strong>16.</strong> Projekt ötletek</a></li></ul>
+            <ul class="chapter"><li class="affix"><a href="README.html">Bevezető</a></li><li><a href="webfejlesztes-alapok.html"><strong>1.</strong> Webfejlesztés alapok</a></li><li><a href="html.html" class="active"><strong>2.</strong> HTML alapok</a></li><li><a href="css.html"><strong>3.</strong> CSS alapok</a></li><li><a href="javascript.html"><strong>4.</strong> JavaScript ismeretek</a></li><li><a href="uj-webes-projekt-letrehozasa-kozepszint.html"><strong>5.</strong> Automatizált webes projekt létrehozása - középhaladó szint</a></li><li><a href="frontend-fejleszto-felkeszules-ellenorzolista.html"><strong>6.</strong> Frontend Fejlesztő Checklista</a></li><li><a href="java.html"><strong>7.</strong> Java nyelv</a></li><li><a href="teszt-automatizalas.html"><strong>8.</strong> Teszt automatizálás</a></li><li><a href="java-unit-test.html"><strong>9.</strong> Java Unit Teszt</a></li><li><a href="playwright-hasznalata.html"><strong>10.</strong> Playwright</a></li><li><a href="spring-boot-bevezetese.html"><strong>11.</strong> Spring Boot</a></li><li><a href="kiberbiztonsag.html"><strong>12.</strong> Kiberbiztonság</a></li><li><a href="penzugy.html"><strong>13.</strong> Pénzügyi ismeretek (A fejezetben lesz szó a Rest API-s tőzsdei kereskedésről)</a></li><li><a href="english-learning.html"><strong>14.</strong> Angol nyelvtanulás</a></li><li><a href="mappa-struktura-es-github.html"><strong>15.</strong> Mappa struktúra és GitHub</a></li><li><a href="webfejlesztes-attekintes.html"><strong>16.</strong> Webfejlesztés áttekintés</a></li><li><a href="motivacio.html"><strong>17.</strong> Motiváció</a></li><li><a href="projekt-otletek.html"><strong>18.</strong> Projekt ötletek</a></li></ul>
         </div>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -101,7 +101,8 @@
 <p>https://www.udemy.com/course/the-complete-javascript-course/
 https://www.youtube.com/playlist?list=PLP9IO4UYNF0VdAajP_5pYG-jG2JRrG72s
 https://www.w3schools.com/html/default.asp
-<a href="https://youtu.be/erEgovG9WBs?si=vEFXO3P_WufyaR-C">100+ Web Development Things you Should Know</a></p>
+<a href="https://youtu.be/erEgovG9WBs?si=vEFXO3P_WufyaR-C">100+ Web Development Things you Should Know</a>
+<a href="https://www.youtube.com/playlist?list=PL4-IK0AVhVjOJs_UjdQeyEZ_cmEV3uJvx">HTML &amp; CSS for Absolute Beginners</a></p>
 <a class="header" href="html.html#alapok" id="alapok"><h1>Alapok</h1></a>
 <p>Érdemes előre megtervezni a weboldal kinézetét. Például itt: https://draw.io/
 Elég egy sematikus ábra, hogy kb itt lesz ennyi gomb stb. Ezt fogja majd tudni.</p>
@@ -110,66 +111,117 @@ HTML magyarázatok és interaktív példákat <a href="https://www.w3schools.com
 <a class="header" href="html.html#struktúra" id="struktúra"><h1>Struktúra</h1></a>
 <p>Sorrend: header, main, nav, footer</p>
 <pre><code class="language-html">&lt;!doctype html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-    &lt;head&gt;
-        &lt;meta charset=&quot;UTF-8&quot; /&gt;
-        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
-        &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; /&gt;
-        &lt;title&gt;Questlog&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;!-- Itt szokott lenni a &lt;nav&gt; tag, a navigációhoz. --&gt;
-    &lt;body&gt;
-        &lt;header&gt;
-            &lt;h1&gt;Gamer/geek teendő lista&lt;/h1&gt;
-            &lt;!--A bekért nevet írjuk ki.--&gt;
-            &lt;h2&gt;Szia!&lt;/h2&gt;
-            &lt;section class=&quot;inputSection&quot;&gt;
-                &lt;form id=&quot;nameForm&quot;&gt;
-                    &lt;label&gt;Your name: &lt;/label&gt;
-                    &lt;input
-                        type=&quot;text&quot;
-                        id=&quot;name&quot;
-                        placeholder=&quot;Pls write your name&quot;
-                        required
-                    /&gt;
-                    &lt;button type=&quot;sumbit&quot;&gt;Submit&lt;/button&gt;
-                &lt;/form&gt;
+&lt;html lang=&quot;hu&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;Questlog - Gamer teendő lista&quot; /&gt;
 
-                &lt;form id=&quot;newquestForm&quot;&gt;
-                    &lt;!--Megnevezés, Dátum, Fontosság {nem fontos, normál, fontos}  --&gt;
-                    &lt;label&gt;Quest name: &lt;/label&gt;
-                    &lt;input
-                        type=&quot;text&quot;
-                        id=&quot;description&quot;
-                        placeholder=&quot;Pls describe&quot;
-                        required
-                    /&gt;
-                    &lt;input type=&quot;date&quot; required /&gt;
-                    &lt;select name=&quot;priority&quot; id=&quot;priority&quot; required&gt;
-                        &lt;option value=&quot;&quot;&gt;Choose priority&lt;/option&gt;
-                        &lt;option value=&quot;Not important&quot;&gt;Not important&lt;/option&gt;
-                        &lt;option value=&quot;Normal&quot;&gt;Normal&lt;/option&gt;
-                        &lt;option value=&quot;Important&quot;&gt;Important&lt;/option&gt;
+    &lt;title&gt;Questlog&lt;/title&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; /&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;!-- HEADER --&gt;
+    &lt;header class=&quot;site-header&quot;&gt;
+        &lt;nav class=&quot;nav&quot;&gt;
+            &lt;h1 class=&quot;logo&quot;&gt;Questlog&lt;/h1&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;!-- MAIN --&gt;
+    &lt;main class=&quot;container&quot;&gt;
+
+        &lt;!-- USER SECTION --&gt;
+        &lt;section aria-labelledby=&quot;user-title&quot;&gt;
+            &lt;h2 id=&quot;user-title&quot;&gt;Felhasználó&lt;/h2&gt;
+
+            &lt;form id=&quot;nameForm&quot; class=&quot;card&quot;&gt;
+                &lt;label for=&quot;name&quot;&gt;Neved&lt;/label&gt;
+                &lt;input 
+                    type=&quot;text&quot; 
+                    id=&quot;name&quot; 
+                    name=&quot;name&quot;
+                    placeholder=&quot;Írd be a neved&quot;
+                    autocomplete=&quot;name&quot;
+                    required 
+                /&gt;
+                &lt;button type=&quot;submit&quot;&gt;Mentés&lt;/button&gt;
+            &lt;/form&gt;
+
+            &lt;p id=&quot;greeting&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
+        &lt;/section&gt;
+
+        &lt;!-- ADD QUEST --&gt;
+        &lt;section aria-labelledby=&quot;quest-form-title&quot;&gt;
+            &lt;h2 id=&quot;quest-form-title&quot;&gt;Új küldetés&lt;/h2&gt;
+
+            &lt;form id=&quot;questForm&quot; class=&quot;card&quot;&gt;
+                &lt;div class=&quot;form-group&quot;&gt;
+                    &lt;label for=&quot;description&quot;&gt;Megnevezés&lt;/label&gt;
+                    &lt;input type=&quot;text&quot; id=&quot;description&quot; required /&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;form-group&quot;&gt;
+                    &lt;label for=&quot;date&quot;&gt;Határidő&lt;/label&gt;
+                    &lt;input type=&quot;date&quot; id=&quot;date&quot; required /&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;form-group&quot;&gt;
+                    &lt;label for=&quot;priority&quot;&gt;Prioritás&lt;/label&gt;
+                    &lt;select id=&quot;priority&quot; required&gt;
+                        &lt;option value=&quot;&quot;&gt;Válassz&lt;/option&gt;
+                        &lt;option value=&quot;low&quot;&gt;Nem fontos&lt;/option&gt;
+                        &lt;option value=&quot;normal&quot;&gt;Normál&lt;/option&gt;
+                        &lt;option value=&quot;high&quot;&gt;Fontos&lt;/option&gt;
                     &lt;/select&gt;
-                    &lt;button type=&quot;sumbit&quot;&gt;Submit&lt;/button&gt;
-                &lt;/form&gt;
-            &lt;/section&gt;
-        &lt;/header&gt;
-        &lt;main&gt;
-            &lt;section class=&quot;mainSection&quot;&gt;
-                &lt;!--Nem minden esetben kell.--&gt;
-                &lt;!--&lt;article&gt;&lt;/article&gt;--&gt;
-                &lt;h3&gt;Active quests&lt;/h3&gt;
-                &lt;ul id=&quot;quest-list&quot;&gt;
-                    &lt;li&gt;Check my mail box.&lt;/li&gt;
-                &lt;/ul&gt;
-            &lt;/section&gt;
-        &lt;/main&gt;
-        &lt;footer&gt;
-            &lt;p&gt;Author&lt;/p&gt;
-        &lt;/footer&gt;
-    &lt;/body&gt;
+                &lt;/div&gt;
+
+                &lt;button type=&quot;submit&quot;&gt;Hozzáadás&lt;/button&gt;
+            &lt;/form&gt;
+        &lt;/section&gt;
+
+        &lt;!-- QUEST LIST --&gt;
+        &lt;section aria-labelledby=&quot;quest-list-title&quot;&gt;
+            &lt;h2 id=&quot;quest-list-title&quot;&gt;Aktív küldetések&lt;/h2&gt;
+
+            &lt;ul id=&quot;quest-list&quot; class=&quot;quest-list&quot;&gt;
+                
+                &lt;li&gt;
+                    &lt;article class=&quot;quest-card&quot; data-priority=&quot;normal&quot;&gt;
+                        &lt;header&gt;
+                            &lt;h3&gt;Check my mailbox&lt;/h3&gt;
+                        &lt;/header&gt;
+
+                        &lt;p&gt;&lt;strong&gt;Határidő:&lt;/strong&gt; 2026-04-20&lt;/p&gt;
+                        &lt;p&gt;&lt;strong&gt;Prioritás:&lt;/strong&gt; Normál&lt;/p&gt;
+
+                        &lt;footer&gt;
+                            &lt;button class=&quot;complete-btn&quot;&gt;Kész&lt;/button&gt;
+                            &lt;button class=&quot;delete-btn&quot;&gt;Törlés&lt;/button&gt;
+                        &lt;/footer&gt;
+                    &lt;/article&gt;
+                &lt;/li&gt;
+
+            &lt;/ul&gt;
+
+            &lt;a
+                target=&quot;_blank&quot;
+                rel=&quot;noopener noreferrer&quot;
+                href=&quot;https://google.hu&quot;
+            &gt;&lt;/a&gt;
+        &lt;/section&gt;
+
+    &lt;/main&gt;
+
+    &lt;!-- FOOTER --&gt;
+    &lt;footer class=&quot;site-footer&quot;&gt;
+        &lt;small&gt;&amp;copy; 2026 Questlog&lt;/small&gt;
+    &lt;/footer&gt;
+
     &lt;script src=&quot;script.js&quot; defer&gt;&lt;/script&gt;
+&lt;/body&gt;
 &lt;/html&gt;
 
 </code></pre>
