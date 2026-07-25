@@ -7349,6 +7349,7 @@ public class User {
 }
 </code></pre>
 <h2 id="a-rest-assured-kérés-felépítése"><a class="header" href="#a-rest-assured-kérés-felépítése">A REST Assured kérés felépítése</a></h2>
+<p>Importja: <code>import static io.restassured.RestAssured.*;</code></p>
 <pre><code class="language-java">given()
     .header(...)
     .contentType(ContentType.JSON)
@@ -7424,6 +7425,7 @@ public class User {
 </div>
 <hr />
 <h1 id="response"><a class="header" href="#response"><code>Response</code></a></h1>
+<p>Importja: <code>import io.restassured.response.Response;</code></p>
 <div class="table-wrapper"><table><thead><tr><th>Metódus</th><th>Mire való?</th><th>Példa</th></tr></thead><tbody>
 <tr><td><code>getStatusCode()</code></td><td>HTTP státuszkód</td><td><code>response.getStatusCode()</code></td></tr>
 <tr><td><code>getStatusLine()</code></td><td>HTTP státusz sor</td><td><code>response.getStatusLine()</code></td></tr>
