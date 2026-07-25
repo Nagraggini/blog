@@ -289,10 +289,31 @@ jacoco.exec
 config.properties
 ```
 
+# Maven wrapper beállítása és használata
+
+A terminálban navigálj el a projekt mappájáig (pl.: cd GitHub/saucedemo) 
+`mvn -v` 
+Ezzel lecsekkoljuk, hogy van-e a gépen maven, ha nem ír verziót, a Mavent telepíteni kell: 
+https://maven.apache.org/download.cgi 
+
+pl. apache-maven-3.9.16-bin.zip letöltés, kicsomagolás 
+környezeti változókhoz felvenni a bin mappáját
+
+Linux-on még ez is kell egyszer: sudo apt install maven
+
+Utána ezt futtasd: `mvn clean test`
+
+Ezután jöhet a csomagolás: `mvn wrapper:wrapper` Ezután létrejönnek ezek: mvnw és mvnw.cmd fájlok és .mvn mappa. Innentől kezdve nem mvn utasítást kell használni, hanem mvnw utasítást! Ezután nem gond, ah nincsen maven a gépen telepítve, simán lehet terminálból is futatni a projektet.
+
+Futtatás linux-on: 
+`./mvnw clean test`
+
+win-on: 
+`mvnw clean test`
+
 ## Teszt osztályok létrehozása
 
 Minden package-t az src/test/java-ban hozz létre. Az api package-n belül pl.: api.UserList -> JUnit Test Case, csekkold, hogy tuti a Jupiter van felül kijelölve. 
-
 
 ## REST API tesztek röviden
 
@@ -349,7 +370,7 @@ class UserUpdateTest extends BaseApiTest {
 				""";
 		int userID=1;
 		
-		LOG.info("Módosítandó user:ID ",userID);
+		LOG.info("Módosítandó id: {} ",userID);
 		
 		//Kijelölöd a lento blokkot. Jobb klikk -> Surround with -> Try-catch Block
 		try {
