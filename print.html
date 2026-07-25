@@ -6933,9 +6933,421 @@ Throwable exception = assertThrows(IllegalArgumentException.class, () -&gt; {
 // Opcionális: a hibaüzenet pontos ellenőrzése
 assertEquals("Negatív szám nem megengedett!", exception.getMessage());
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rest-assured-alapjai-rest-api-tesztelés"><a class="header" href="#rest-assured-alapjai-rest-api-tesztelés">Rest Assured alapjai (REST API tesztelés)</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="tartalomjegyzék-4"><a class="header" href="#tartalomjegyzék-4">Tartalomjegyzék</a></h1>
+<ul>
+<li><a href="rest-assured.html#tartalomjegyz%C3%A9k">Tartalomjegyzék</a></li>
+<li><a href="rest-assured.html#rest-assured-alapjai-rest-api-tesztel%C3%A9s">Rest Assured alapjai (REST API tesztelés)</a></li>
+<li><a href="rest-assured.html#projekt-l%C3%A9trehoz%C3%A1sa">Projekt létrehozása</a>
+<ul>
+<li><a href="rest-assured.html#pomxml">pom.xml</a></li>
+<li><a href="rest-assured.html#baseapitest-oszt%C3%A1ly">BaseApiTest osztály</a></li>
+<li><a href="rest-assured.html#ci-bekapcsol%C3%A1sa">CI bekapcsolása</a></li>
+<li><a href="rest-assured.html#gitignore">Gitignore</a></li>
+<li><a href="rest-assured.html#teszt-oszt%C3%A1lyok-l%C3%A9trehoz%C3%A1sa">Teszt osztályok létrehozása</a></li>
+<li><a href="rest-assured.html#rest-api-tesztek-r%C3%B6viden">REST API tesztek röviden</a></li>
+</ul>
+</li>
+<li><a href="rest-assured.html#loggol%C3%A1sok">Loggolások</a>
+<ul>
+<li><a href="rest-assured.html#loggol%C3%A1s-haszn%C3%A1lata">Loggolás használata</a></li>
+</ul>
+</li>
+<li><a href="rest-assured.html#pojo">POJO</a>
+<ul>
+<li><a href="rest-assured.html#a-rest-assured-k%C3%A9r%C3%A9s-fel%C3%A9p%C3%ADt%C3%A9se">A REST Assured kérés felépítése</a></li>
+</ul>
+</li>
+<li><a href="rest-assured.html#given"><code>given()</code></a></li>
+<li><a href="rest-assured.html#when"><code>when()</code></a></li>
+<li><a href="rest-assured.html#then"><code>then()</code></a></li>
+<li><a href="rest-assured.html#extract"><code>extract()</code></a></li>
+<li><a href="rest-assured.html#response"><code>Response</code></a>
+<ul>
+<li><a href="rest-assured.html#ha-nincs-mez%C5%91k%C3%B6z-akkor-extractasuserclass-t-kell-haszn%C3%A1lni">Ha nincs mezőköz, akkor <code>.extract().as(User.class)</code>-t kell használni.</a></li>
+</ul>
+</li>
+<li><a href="rest-assured.html#gyakori-http-st%C3%A1tuszk%C3%B3dok">Gyakori HTTP státuszkódok</a></li>
+<li><a href="rest-assured.html#legfontosabb-importok">Legfontosabb importok</a>
+<ul>
+<li><a href="rest-assured.html#hamcrest-matcherek-rest-assured-ben">Hamcrest Matcherek Rest Assured-ben</a></li>
+<li><a href="rest-assured.html#leggyakrabban-haszn%C3%A1ltak">Leggyakrabban használtak</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="rest-assured-alapjai-rest-api-tesztelés"><a class="header" href="#rest-assured-alapjai-rest-api-tesztelés">Rest Assured alapjai (REST API tesztelés)</a></h1>
 <p><a href="https://www.youtube.com/watch?v=vgMyJhrMV0o&amp;list=PLhW3qG5bs-L8xPrBwDv66cTMlFNeUPdJx&amp;index=5">REST Assured Beginner Tutorial</a></p>
-<p><a href="https://github.com/Nagraggini/petstore">Itt</a> találod a REST API-s projektemet, benne magyarázattal.</p>
+<p><a href="https://github.com/Nagraggini/petstore">Itt</a> találod a REST API-s projektemet, benne magyarázattal,
+<a href="https://github.com/Nagraggini/reqres">itt</a> egy másik is.</p>
+<p>Az api tesztekkel a szerződés ellenőrzését végezzük el.</p>
+<h1 id="projekt-létrehozása"><a class="header" href="#projekt-létrehozása">Projekt létrehozása</a></h1>
+<p>Fájl -&gt; new project -&gt; maven -&gt; create a simple project -&gt; next
+group id: hu.tanulas
+artifact id: proba -&gt; Finish</p>
+<p>Jobb klikk a projekt mappán -&gt; Build path -&gt; Configure build path -&gt; JRE System Library 21 legyen Utána bal oldalt kattints a Java Compiler-re és java 21-et állítsd be. Apply and close
+pom.xml-be az első sor végén lévő http-t írd át https-re.
+És ezt másold be:</p>
+<pre><code class="language-xml">	  &lt;dependencies&gt;
+	 
+		  &lt;!-- Source: https://mvnrepository.com/artifact/io.rest-assured/rest-assured --&gt;
+		&lt;dependency&gt;
+		    &lt;groupId&gt;io.rest-assured&lt;/groupId&gt;
+		    &lt;artifactId&gt;rest-assured&lt;/artifactId&gt;
+		    &lt;version&gt;5.5.6&lt;/version&gt;
+		    &lt;scope&gt;test&lt;/scope&gt;
+		&lt;/dependency&gt;
+		
+	  &lt;/dependencies&gt;
+</code></pre>
+<h2 id="pomxml"><a class="header" href="#pomxml">pom.xml</a></h2>
+<pre><code class="language-xml">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;hu.tanulas&lt;/groupId&gt;
+  &lt;artifactId&gt;proba&lt;/artifactId&gt;
+  &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+  
+  
+	  &lt;dependencies&gt;
+	  
+		  &lt;!-- Source: https://mvnrepository.com/artifact/io.rest-assured/rest-assured --&gt;
+		&lt;dependency&gt;
+		    &lt;groupId&gt;io.rest-assured&lt;/groupId&gt;
+		    &lt;artifactId&gt;rest-assured&lt;/artifactId&gt;
+		    &lt;version&gt;5.5.6&lt;/version&gt;
+		    &lt;scope&gt;test&lt;/scope&gt;
+		&lt;/dependency&gt;
+		
+		&lt;!--Maven Wrapper, hogy Eclipse nélkül is lehessen futtatni. --&gt;
+		&lt;!-- Source: https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter --&gt;
+		&lt;dependency&gt;
+		    &lt;groupId&gt;org.junit.jupiter&lt;/groupId&gt;
+		    &lt;artifactId&gt;junit-jupiter&lt;/artifactId&gt;
+		    &lt;version&gt;5.11.0&lt;/version&gt;
+		    &lt;scope&gt;test&lt;/scope&gt;
+		&lt;/dependency&gt;
+		
+		&lt;!-- Source: https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core --&gt;
+		&lt;dependency&gt;
+		    &lt;groupId&gt;org.apache.logging.log4j&lt;/groupId&gt;
+		    &lt;artifactId&gt;log4j-core&lt;/artifactId&gt;
+		    &lt;version&gt;2.26.0&lt;/version&gt;
+		    &lt;scope&gt;compile&lt;/scope&gt;
+		&lt;/dependency&gt;
+	
+		&lt;!--A response válaszokból esetleges objektumképzéshez szükség van json feldolgozó importra is, pl.: jackson --&gt;
+		&lt;!-- Source: https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core --&gt;
+		&lt;dependency&gt;
+		    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
+		    &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;
+		    &lt;version&gt;2.17.1&lt;/version&gt;
+		    &lt;scope&gt;compile&lt;/scope&gt;
+		&lt;/dependency&gt;
+
+	  &lt;/dependencies&gt;
+	  
+	  &lt;!--Verzió megadása, de nem kötelező ezeknél is működik. Ezzel még biztosabb lesz a program.--&gt;
+	  &lt;properties&gt;
+	  	&lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+	  	&lt;maven.compiler.release&gt;21&lt;/maven.compiler.release&gt;
+	  	&lt;maven.compiler.target&gt;21&lt;/maven.compiler.target&gt;
+	  &lt;/properties&gt;
+	  
+	  
+	  &lt;build&gt;
+	    &lt;plugins&gt;
+	        &lt;plugin&gt;
+	            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+	            &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+	            &lt;version&gt;3.5.4&lt;/version&gt;	         
+	        &lt;/plugin&gt;
+	        
+	        &lt;plugin&gt;
+	            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+	            &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+	            &lt;version&gt;3.12.1&lt;/version&gt;	
+	            &lt;configuration&gt;      
+	            	&lt;release&gt;21&lt;/release&gt;
+	            &lt;/configuration&gt;     
+	        &lt;/plugin&gt;
+	        &lt;!--Utána navigálj el a cmd-ben a projekt mappáig, ahol a pom.xml van.
+	        Aztán mvn clean test
+	        --&gt;
+	    &lt;/plugins&gt;
+	&lt;/build&gt;
+
+	  
+&lt;/project&gt;
+</code></pre>
+<h2 id="baseapitest-osztály"><a class="header" href="#baseapitest-osztály">BaseApiTest osztály</a></h2>
+<p>A base package-be rakd és innen származtasd a többit teszt osztályt.</p>
+<pre><code class="language-java">package api.base;
+
+import org.junit.jupiter.api.BeforeEach;
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+
+public class BaseApiTest {
+
+	@BeforeEach
+	void setup() {
+        // Tesztelni kívánt weboldal címe.
+		RestAssured.baseURI="https://jsonplaceholder.typicode.com/";
+		
+		RestAssured.requestSpecification=RestAssured
+				.given()	
+					.accept(ContentType.JSON); // json formátumú választ várunk 
+	}
+
+}
+</code></pre>
+<h2 id="ci-bekapcsolása"><a class="header" href="#ci-bekapcsolása">CI bekapcsolása</a></h2>
+<p>.github/workflows/maven-tests.yml</p>
+<pre><code class="language-yml">name: Run Rest Assured API Tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up JDK21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          
+      - name: Run Maven Tests
+        run: mvn -B clean test -DCI=true
+    
+      - name: Upload surefire test reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-reports
+          path: target/surefire-reports
+</code></pre>
+<h2 id="gitignore"><a class="header" href="#gitignore">Gitignore</a></h2>
+<pre><code class="language-.gitignore"># =========================
+# Java compiled files
+# =========================
+*.class
+
+# =========================
+# Maven
+# =========================
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+
+# =========================
+# IntelliJ IDEA
+# =========================
+.idea/
+*.iml
+out/
+
+# =========================
+# Eclipse
+# =========================
+.project
+.classpath
+.settings/
+.metadata/
+bin/
+
+# =========================
+# VS Code
+# =========================
+.vscode/
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# Selenium / test outputs
+# =========================
+screenshots/
+reports/
+allure-results/
+allure-report/
+
+# =========================
+# Sonar
+# =========================
+.scannerwork/
+.sonar/
+
+# =========================
+# Coverage
+# =========================
+coverage/
+jacoco.exec
+
+# =========================
+# Temporary files
+# =========================
+*.tmp
+*.temp
+*.swp
+
+# =========================
+# Secrets and env, config.properties
+# =========================
+.env
+.secrets
+config.properties
+</code></pre>
+<h2 id="teszt-osztályok-létrehozása"><a class="header" href="#teszt-osztályok-létrehozása">Teszt osztályok létrehozása</a></h2>
+<p>Minden package-t az src/test/java-ban hozz létre. Az api package-n belül pl.: api.UserList -&gt; JUnit Test Case, csekkold, hogy tuti a Jupiter van felül kijelölve.</p>
+<h2 id="rest-api-tesztek-röviden"><a class="header" href="#rest-api-tesztek-röviden">REST API tesztek röviden</a></h2>
+<p>body vizsgálatoknél két paraméter határozza meg az elvárt eredmény ellenőrzését:</p>
+<ol>
+<li>
+<p>paraméter - meghatározza az adatot, amire az ellenőrzés vonatkozik
+Ez egy json Path
+https://github.com/rest-assured/rest-assured/wiki/Usage#complex-json-paths</p>
+</li>
+<li>
+<p>paraméter - Hamcrest matcher, ezen keresztül mondjuk meg, hogy mit várunk el az adattal kapcsolatban. Rengeteg matchers létezik, pl.: nullValue, notNullValue, greaterThan, lessThan, equalTo, hasItem, anEmptyMap stb.:
+https://hamcrest.org/JavaHamcrest/javadoc/2.2/org/hamcrest/Matchers.html</p>
+</li>
+</ol>
+<p>Lentebb lesz külön részletezve.</p>
+<h1 id="loggolások"><a class="header" href="#loggolások">Loggolások</a></h1>
+<p>Surfire report: A teszt eredményét foglalja össze. Futás utáni összegzés.</p>
+<p>Log: A hibakeresést segíti.
+[.then után -&gt; .log().ifValidationFails() // A jó log, csak baj esetén szól (ha pl.: létező id-t adunk meg)]
+Futás közbeni összegzés.</p>
+<h2 id="loggolás-használata"><a class="header" href="#loggolás-használata">Loggolás használata</a></h2>
+<pre><code class="language-java">package api.usersUpdate;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+import org.apache.logging.log4j.LogManager;
+import  org.apache.logging.log4j.Logger;
+
+import org.junit.jupiter.api.Test;
+
+import api.base.BaseApiTest;
+import io.restassured.http.ContentType;
+
+class UserUpdateTest extends BaseApiTest {
+
+	//import org.apache.logging.log4j.Logger; 
+	//A végén lévő zárójelben magát az osztályt kell megadni. 
+	private static final Logger LOG=LogManager.getLogger(UserUpdateTest.class);
+			
+	@Test
+	void userUpdateTestWithLog() {
+		LOG.info("TC4.1 indítása, felhasználó módosítása");
+		//Szövegblokk. Bemeneti adatok.
+		String requestBody= """
+				{	
+					"name":"Teszt Elek",						
+					"email":"tesztelek@teszt.com"
+				}
+				""";
+		int userID=1;
+		
+		LOG.info("Módosítandó user:ID ",userID);
+		
+		//Kijelölöd a lento blokkot. Jobb klikk -&gt; Surround with -&gt; Try-catch Block
+		try {
+			//A restassured fluens api megoldást használ. 
+			given()
+				.contentType(ContentType.JSON)
+				.body(requestBody)
+			.when()	
+				.put("/users/"+userID)
+			.then()
+				.log().ifValidationFails()
+				.statusCode(200)
+				.body("id", equalTo(1))
+				.body("name", equalTo("Teszt Elek"))
+				.body("email", equalTo("tesztelek@teszt.com"));
+			
+			LOG.info("TC4.1 sikeresen lefutott");
+		} catch (Exception e) {
+			LOG.error("Hiba történt a teszt futtatása közben: ",e);
+			throw e;
+		}
+	}
+}
+
+</code></pre>
+<p>Az src/test/recources/log4j2.xml fájlba:</p>
+<pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;Configuration status="WARN"&gt; &lt;!-- Log4g-nek a belső működésére vonatkozik.  --&gt;
+
+    &lt;Appenders&gt;
+    &lt;!-- A konzolja írja ki a szöveget. --&gt;
+        &lt;Console name="Console" target="SYSTEM_OUT"&gt;
+        &lt;!-- Megjelenítési forma.  --&gt;
+            &lt;PatternLayout
+                pattern="%d{HH:mm:ss} %-5level %logger - %msg%n"/&gt;
+        &lt;/Console&gt;
+    &lt;/Appenders&gt;
+
+    &lt;Loggers&gt;
+        &lt;Root level="INFO"&gt; &lt;!-- Infó szintől felfelé kerül megjelenítésre a loggolás. --&gt;
+            &lt;AppenderRef ref="Console"/&gt;
+        &lt;/Root&gt;
+    &lt;/Loggers&gt;
+
+&lt;/Configuration&gt;
+</code></pre>
+<h1 id="pojo"><a class="header" href="#pojo">POJO</a></h1>
+<p>Külön package-et hozunk létre a POJO osztályok számára, amelyekben az objektumokat tároljuk.</p>
+<p>A POJO (Plain Old Java Object) egyszerű Java osztály, amely általában csak adatokat tartalmaz, például mezőket, gettereket és settereket. Az elkülönített package segít a kód áttekinthetőségében és rendszerezésében.</p>
+<p>Így néz ki egy osztálya:</p>
+<pre><code class="language-java">package userPOJO;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+//Csak azokat a mezőket veszi figyelembe, 
+//amiket az osztály adattagjaiként létrehozunk.
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class User {
+	
+	private int id;
+	private String name;
+	private String username;
+	private String email;
+	
+	public int getId() {
+		return id;
+	}
+	public String getName() {
+		return name;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public String getEmail() {
+		return email;
+	}
+	
+}
+</code></pre>
 <h2 id="a-rest-assured-kérés-felépítése"><a class="header" href="#a-rest-assured-kérés-felépítése">A REST Assured kérés felépítése</a></h2>
 <pre><code class="language-java">given()
     .header(...)
@@ -7016,6 +7428,7 @@ assertEquals("Negatív szám nem megengedett!", exception.getMessage());
 <tr><td><code>getStatusCode()</code></td><td>HTTP státuszkód</td><td><code>response.getStatusCode()</code></td></tr>
 <tr><td><code>getStatusLine()</code></td><td>HTTP státusz sor</td><td><code>response.getStatusLine()</code></td></tr>
 <tr><td><code>getBody().asString()</code></td><td>Body Stringként</td><td><code>response.getBody().asString()</code></td></tr>
+<tr><td><code>jsonPath().getObject()</code></td><td>Objektum kiolvasása</td><td><code>response.jsonPath().getObject("data",User.class)</code></td></tr>
 <tr><td><code>jsonPath().getString()</code></td><td>String kiolvasása</td><td><code>response.jsonPath().getString("name")</code></td></tr>
 <tr><td><code>jsonPath().getInt()</code></td><td>Integer kiolvasása</td><td><code>response.jsonPath().getInt("id")</code></td></tr>
 <tr><td><code>jsonPath().getList()</code></td><td>Lista kiolvasása</td><td><code>response.jsonPath().getList("data")</code></td></tr>
@@ -7023,7 +7436,9 @@ assertEquals("Negatív szám nem megengedett!", exception.getMessage());
 <tr><td><code>time()</code></td><td>Válaszidő</td><td><code>response.time()</code></td></tr>
 </tbody></table>
 </div>
-<hr />
+<p>A <code>response.jsonPath().getObject("data",User.class)</code>-nél a "data" a mezőköz. A User.class a POJO osztályl jön.
+Viszont a putnál a mezőköz legyne üres "";</p>
+<h2 id="ha-nincs-mezőköz-akkor-extractasuserclass-t-kell-használni"><a class="header" href="#ha-nincs-mezőköz-akkor-extractasuserclass-t-kell-használni">Ha nincs mezőköz, akkor <code>.extract().as(User.class)</code>-t kell használni.</a></h2>
 <h1 id="gyakori-http-státuszkódok"><a class="header" href="#gyakori-http-státuszkódok">Gyakori HTTP státuszkódok</a></h1>
 <div class="table-wrapper"><table><thead><tr><th>Kód</th><th>Jelentés</th></tr></thead><tbody>
 <tr><td><code>200</code></td><td>OK</td></tr>
