@@ -3,26 +3,26 @@
 - [Tartalomjegyzék](#tartalomjegyzék)
 - [Rest Assured alapjai (REST API tesztelés)](#rest-assured-alapjai-rest-api-tesztelés)
 - [Projekt létrehozása](#projekt-létrehozása)
-  - [pom.xml](#pomxml)
-  - [BaseApiTest osztály](#baseapitest-osztály)
-  - [CI bekapcsolása](#ci-bekapcsolása)
-  - [Gitignore](#gitignore)
-  - [Teszt osztályok létrehozása](#teszt-osztályok-létrehozása)
-  - [REST API tesztek röviden](#rest-api-tesztek-röviden)
+	- [pom.xml](#pomxml)
+	- [BaseApiTest osztály](#baseapitest-osztály)
+	- [CI bekapcsolása](#ci-bekapcsolása)
+	- [Gitignore](#gitignore)
+	- [Teszt osztályok létrehozása](#teszt-osztályok-létrehozása)
+	- [REST API tesztek röviden](#rest-api-tesztek-röviden)
 - [Loggolások](#loggolások)
-  - [Loggolás használata](#loggolás-használata)
+	- [Loggolás használata](#loggolás-használata)
 - [POJO](#pojo)
-  - [A REST Assured kérés felépítése](#a-rest-assured-kérés-felépítése)
+	- [A REST Assured kérés felépítése](#a-rest-assured-kérés-felépítése)
 - [`given()`](#given)
 - [`when()`](#when)
 - [`then()`](#then)
 - [`extract()`](#extract)
 - [`Response`](#response)
-  - [Ha nincs mezőköz, akkor `.extract().as(User.class)`-t kell használni.](#ha-nincs-mezőköz-akkor-extractasuserclass-t-kell-használni)
+	- [Ha nincs mezőköz, akkor `.extract().as(User.class)`-t kell használni.](#ha-nincs-mezőköz-akkor-extractasuserclass-t-kell-használni)
 - [Gyakori HTTP státuszkódok](#gyakori-http-státuszkódok)
 - [Legfontosabb importok](#legfontosabb-importok)
-  - [Hamcrest Matcherek Rest Assured-ben](#hamcrest-matcherek-rest-assured-ben)
-  - [Leggyakrabban használtak](#leggyakrabban-használtak)
+	- [Hamcrest Matcherek Rest Assured-ben](#hamcrest-matcherek-rest-assured-ben)
+	- [Leggyakrabban használtak](#leggyakrabban-használtak)
 
 
 # Rest Assured alapjai (REST API tesztelés)
@@ -441,6 +441,8 @@ public class User {
 
 ## A REST Assured kérés felépítése
 
+Importja: `import static io.restassured.RestAssured.*;`
+
 ```java
 given()
     .header(...)
@@ -531,6 +533,8 @@ Az ellenőrzés után adatokat nyerhetsz ki.
 ---
 
 # `Response`
+
+Importja: `import io.restassured.response.Response;`
 
 | Metódus                  | Mire való?             | Példa                                              |
 | ------------------------ | ---------------------- | ---------------------------------------            |
