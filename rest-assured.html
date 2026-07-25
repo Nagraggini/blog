@@ -455,6 +455,20 @@ jacoco.exec
 .secrets
 config.properties
 </code></pre>
+<h1 id="maven-wrapper-beállítása-és-használata"><a class="header" href="#maven-wrapper-beállítása-és-használata">Maven wrapper beállítása és használata</a></h1>
+<p>A terminálban navigálj el a projekt mappájáig (pl.: cd GitHub/saucedemo)
+<code>mvn -v</code>
+Ezzel lecsekkoljuk, hogy van-e a gépen maven, ha nem ír verziót, a Mavent telepíteni kell:
+https://maven.apache.org/download.cgi</p>
+<p>pl. apache-maven-3.9.16-bin.zip letöltés, kicsomagolás
+környezeti változókhoz felvenni a bin mappáját</p>
+<p>Linux-on még ez is kell egyszer: sudo apt install maven</p>
+<p>Utána ezt futtasd: <code>mvn clean test</code></p>
+<p>Ezután jöhet a csomagolás: <code>mvn wrapper:wrapper</code> Ezután létrejönnek ezek: mvnw és mvnw.cmd fájlok és .mvn mappa. Innentől kezdve nem mvn utasítást kell használni, hanem mvnw utasítást! Ezután nem gond, ah nincsen maven a gépen telepítve, simán lehet terminálból is futatni a projektet.</p>
+<p>Futtatás linux-on:
+<code>./mvnw clean test</code></p>
+<p>win-on:
+<code>mvnw clean test</code></p>
 <h2 id="teszt-osztályok-létrehozása"><a class="header" href="#teszt-osztályok-létrehozása">Teszt osztályok létrehozása</a></h2>
 <p>Minden package-t az src/test/java-ban hozz létre. Az api package-n belül pl.: api.UserList -&gt; JUnit Test Case, csekkold, hogy tuti a Jupiter van felül kijelölve.</p>
 <h2 id="rest-api-tesztek-röviden"><a class="header" href="#rest-api-tesztek-röviden">REST API tesztek röviden</a></h2>
@@ -508,7 +522,7 @@ class UserUpdateTest extends BaseApiTest {
 				""";
 		int userID=1;
 		
-		LOG.info("Módosítandó user:ID ",userID);
+		LOG.info("Módosítandó id: {} ",userID);
 		
 		//Kijelölöd a lento blokkot. Jobb klikk -&gt; Surround with -&gt; Try-catch Block
 		try {
