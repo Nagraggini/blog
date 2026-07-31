@@ -40,6 +40,7 @@
 - [Oldalváltás](#oldalváltás)
 - [Canvas](#canvas)
 - [POM](#pom)
+- [Page Chaining](#page-chaining)
 - [Report feltöltésének automatizálása Azure DevOps-al](#report-feltöltésének-automatizálása-azure-devops-al)
 
 
@@ -746,6 +747,24 @@ await page.locator("canvas.ol-fixedoverlay").click({
 A POM az automata tesztelésben a Page Object Model (Oldalobjektum-modell) rövidítése. Ez a legnépszerűbb és legelterjedtebb tervezési minta (design pattern) a UI-tesztelésben (Playwright, Selenium, Cypress).
 
 Lényege, hogy a weboldal egyes oldalait (vagy nagyobb komponenseit, pl. fejléc, menü) külön JavaScript/TypeScript osztályokként (Class) modellezzük le.
+
+# Page Chaining
+
+A Page Chaining egy tervezési minta, amelyet általában a Page Object Model (POM) mellett használunk Playwright teszteknél.
+
+A lényege:
+
+Egy oldalon végrehajtott művelet után a metódus visszaadja a következő oldal objektumát, így a teszt folytatható a következő oldalon.
+
+A teszt folyamatot oldalról oldalra lehet vezetni:
+
+LoginPage
+     ↓
+DashboardPage
+     ↓
+ProfilePage
+
+Ha nincsen oldalváltó művelet, akkor az adott oldal objektumát adja vissza. 
 
 # Report feltöltésének automatizálása Azure DevOps-al
 

@@ -7,6 +7,7 @@
 	- [BaseApiTest osztály](#baseapitest-osztály)
 	- [CI bekapcsolása](#ci-bekapcsolása)
 	- [Gitignore](#gitignore)
+- [Maven wrapper beállítása és használata](#maven-wrapper-beállítása-és-használata)
 	- [Teszt osztályok létrehozása](#teszt-osztályok-létrehozása)
 	- [REST API tesztek röviden](#rest-api-tesztek-röviden)
 - [Loggolások](#loggolások)
@@ -29,8 +30,10 @@
 
 [REST Assured Beginner Tutorial](https://www.youtube.com/watch?v=vgMyJhrMV0o&list=PLhW3qG5bs-L8xPrBwDv66cTMlFNeUPdJx&index=5)
 
-[Itt](https://github.com/Nagraggini/petstore) találod a REST API-s projektemet, benne magyarázattal, 
-[itt](https://github.com/Nagraggini/reqres) egy másik is.
+REST API-s projektjeim magyarázatokkal:
+- [petstore](https://github.com/Nagraggini/petstore) 
+- [reqres](https://github.com/Nagraggini/reqres) 
+- [jsonplaceholder-demo-api](https://github.com/Nagraggini/jsonplaceholder-demo-api)
 
 Az api tesztekkel a szerződés ellenőrzését végezzük el. 
 
@@ -41,7 +44,9 @@ group id: hu.tanulas
 artifact id: proba -> Finish 
 
 Jobb klikk a projekt mappán -> Build path -> Configure build path -> JRE System Library 21 legyen Utána bal oldalt kattints a Java Compiler-re és java 21-et állítsd be. Apply and close 
-pom.xml-be az első sor végén lévő http-t írd át https-re.
+
+**A pom.xml-be az első sor végén lévő http-t írd át https-re!**
+
 És ezt másold be:
 
 ```xml
@@ -163,7 +168,6 @@ public class BaseApiTest {
 				.given()	
 					.accept(ContentType.JSON); // json formátumú választ várunk 
 	}
-
 }
 ```
 
@@ -317,7 +321,7 @@ Minden package-t az src/test/java-ban hozz létre. Az api package-n belül pl.: 
 
 ## REST API tesztek röviden
 
-body vizsgálatoknél két paraméter határozza meg az elvárt eredmény ellenőrzését:
+A body vizsgálatoknál két paraméter határozza meg az elvárt eredmény ellenőrzését:
 
 1. paraméter - meghatározza az adatot, amire az ellenőrzés vonatkozik
 Ez egy json Path 
@@ -334,6 +338,7 @@ Surfire report: A teszt eredményét foglalja össze. Futás utáni összegzés.
 
 Log: A hibakeresést segíti. 
 [.then után -> .log().ifValidationFails() // A jó log, csak baj esetén szól (ha pl.: létező id-t adunk meg)]
+
 Futás közbeni összegzés. 
 
 ## Loggolás használata
@@ -646,6 +651,7 @@ import io.restassured.response.Response;
 | Nem egyenlő                 | `not(equalTo())`   |
 | Nem null                    | `notNullValue()`   |
 | Null                        | `nullValue()`      |
+| Nem üres					  | `not(empty())`	   |
 | Lista mérete                | `hasSize()`        |
 | Lista tartalmaz elemet      | `hasItem()`        |
 | Lista több elemet tartalmaz | `hasItems()`       |
@@ -658,3 +664,20 @@ import io.restassured.response.Response;
 | Kisebb mint                 | `lessThan()`       |
 | Több feltétel egyszerre     | `allOf()`          |
 | Több lehetőség közül egyik  | `anyOf()`          |
+
+Mezők létezését, így kell ellenőrizni:
+`everyItem(allOf(hasKey("id"),hasKey("password")))`
+
+Nem üresek-e az id mezők:
+`body("data.id", everyItem(notNullValue()));`
+
+String esetén:
+`body("data.password", everyItem(not(isEmptyString())));`
+
+Nem üres (teljes body válasz, lista, tömb, map vagy string):  `not(empty())`
+
+Null érték biztosabb ellenőrzése:
+`.body("$", anyOf(anEmptyMap(), nullValue(), empty()))`
+
+A lista legalább egy elemet tartalmaz:
+`body("$.size()", greaterThan(0))`
