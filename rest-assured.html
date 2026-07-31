@@ -183,6 +183,10 @@
 <li><a href="#baseapitest-oszt%C3%A1ly">BaseApiTest osztály</a></li>
 <li><a href="#ci-bekapcsol%C3%A1sa">CI bekapcsolása</a></li>
 <li><a href="#gitignore">Gitignore</a></li>
+</ul>
+</li>
+<li><a href="#maven-wrapper-be%C3%A1ll%C3%ADt%C3%A1sa-%C3%A9s-haszn%C3%A1lata">Maven wrapper beállítása és használata</a>
+<ul>
 <li><a href="#teszt-oszt%C3%A1lyok-l%C3%A9trehoz%C3%A1sa">Teszt osztályok létrehozása</a></li>
 <li><a href="#rest-api-tesztek-r%C3%B6viden">REST API tesztek röviden</a></li>
 </ul>
@@ -216,16 +220,20 @@
 </ul>
 <h1 id="rest-assured-alapjai-rest-api-tesztelés"><a class="header" href="#rest-assured-alapjai-rest-api-tesztelés">Rest Assured alapjai (REST API tesztelés)</a></h1>
 <p><a href="https://www.youtube.com/watch?v=vgMyJhrMV0o&amp;list=PLhW3qG5bs-L8xPrBwDv66cTMlFNeUPdJx&amp;index=5">REST Assured Beginner Tutorial</a></p>
-<p><a href="https://github.com/Nagraggini/petstore">Itt</a> találod a REST API-s projektemet, benne magyarázattal,
-<a href="https://github.com/Nagraggini/reqres">itt</a> egy másik is.</p>
+<p>REST API-s projektjeim magyarázatokkal:</p>
+<ul>
+<li><a href="https://github.com/Nagraggini/petstore">petstore</a></li>
+<li><a href="https://github.com/Nagraggini/reqres">reqres</a></li>
+<li><a href="https://github.com/Nagraggini/jsonplaceholder-demo-api">jsonplaceholder-demo-api</a></li>
+</ul>
 <p>Az api tesztekkel a szerződés ellenőrzését végezzük el.</p>
 <h1 id="projekt-létrehozása"><a class="header" href="#projekt-létrehozása">Projekt létrehozása</a></h1>
 <p>Fájl -&gt; new project -&gt; maven -&gt; create a simple project -&gt; next
 group id: hu.tanulas
 artifact id: proba -&gt; Finish</p>
-<p>Jobb klikk a projekt mappán -&gt; Build path -&gt; Configure build path -&gt; JRE System Library 21 legyen Utána bal oldalt kattints a Java Compiler-re és java 21-et állítsd be. Apply and close
-pom.xml-be az első sor végén lévő http-t írd át https-re.
-És ezt másold be:</p>
+<p>Jobb klikk a projekt mappán -&gt; Build path -&gt; Configure build path -&gt; JRE System Library 21 legyen Utána bal oldalt kattints a Java Compiler-re és java 21-et állítsd be. Apply and close</p>
+<p><strong>A pom.xml-be az első sor végén lévő http-t írd át https-re!</strong></p>
+<p>És ezt másold be:</p>
 <pre><code class="language-xml">	  &lt;dependencies&gt;
 	 
 		  &lt;!-- Source: https://mvnrepository.com/artifact/io.rest-assured/rest-assured --&gt;
@@ -337,7 +345,6 @@ public class BaseApiTest {
 				.given()	
 					.accept(ContentType.JSON); // json formátumú választ várunk 
 	}
-
 }
 </code></pre>
 <h2 id="ci-bekapcsolása"><a class="header" href="#ci-bekapcsolása">CI bekapcsolása</a></h2>
@@ -472,7 +479,7 @@ környezeti változókhoz felvenni a bin mappáját</p>
 <h2 id="teszt-osztályok-létrehozása"><a class="header" href="#teszt-osztályok-létrehozása">Teszt osztályok létrehozása</a></h2>
 <p>Minden package-t az src/test/java-ban hozz létre. Az api package-n belül pl.: api.UserList -&gt; JUnit Test Case, csekkold, hogy tuti a Jupiter van felül kijelölve.</p>
 <h2 id="rest-api-tesztek-röviden"><a class="header" href="#rest-api-tesztek-röviden">REST API tesztek röviden</a></h2>
-<p>body vizsgálatoknél két paraméter határozza meg az elvárt eredmény ellenőrzését:</p>
+<p>A body vizsgálatoknál két paraméter határozza meg az elvárt eredmény ellenőrzését:</p>
 <ol>
 <li>
 <p>paraméter - meghatározza az adatot, amire az ellenőrzés vonatkozik
@@ -488,8 +495,8 @@ https://hamcrest.org/JavaHamcrest/javadoc/2.2/org/hamcrest/Matchers.html</p>
 <h1 id="loggolások"><a class="header" href="#loggolások">Loggolások</a></h1>
 <p>Surfire report: A teszt eredményét foglalja össze. Futás utáni összegzés.</p>
 <p>Log: A hibakeresést segíti.
-[.then után -&gt; .log().ifValidationFails() // A jó log, csak baj esetén szól (ha pl.: létező id-t adunk meg)]
-Futás közbeni összegzés.</p>
+[.then után -&gt; .log().ifValidationFails() // A jó log, csak baj esetén szól (ha pl.: létező id-t adunk meg)]</p>
+<p>Futás közbeni összegzés.</p>
 <h2 id="loggolás-használata"><a class="header" href="#loggolás-használata">Loggolás használata</a></h2>
 <pre><code class="language-java">package api.usersUpdate;
 
@@ -758,6 +765,7 @@ import io.restassured.response.Response;
 <tr><td>Nem egyenlő</td><td><code>not(equalTo())</code></td></tr>
 <tr><td>Nem null</td><td><code>notNullValue()</code></td></tr>
 <tr><td>Null</td><td><code>nullValue()</code></td></tr>
+<tr><td>Nem üres</td><td><code>not(empty())</code></td></tr>
 <tr><td>Lista mérete</td><td><code>hasSize()</code></td></tr>
 <tr><td>Lista tartalmaz elemet</td><td><code>hasItem()</code></td></tr>
 <tr><td>Lista több elemet tartalmaz</td><td><code>hasItems()</code></td></tr>
@@ -772,6 +780,18 @@ import io.restassured.response.Response;
 <tr><td>Több lehetőség közül egyik</td><td><code>anyOf()</code></td></tr>
 </tbody></table>
 </div>
+<p>Mezők létezését, így kell ellenőrizni:
+<code>everyItem(allOf(hasKey("id"),hasKey("password")))</code></p>
+<p>Nem üresek-e az id mezők:
+<code>body("data.id", everyItem(notNullValue()));</code></p>
+<p>String esetén:
+<code>body("data.password", everyItem(not(isEmptyString())));</code></p>
+<p>Nem üres (teljes body válasz, lista, tömb, map vagy string):  <code>not(empty())</code></p>
+<p>Null érték biztosabb ellenőrzése:
+<code>.body("$", anyOf(anEmptyMap(), nullValue(), empty()))</code></p>
+<p>A lista legalább egy elemet tartalmaz:
+<code>body("$.size()", greaterThan(0))</code></p>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
