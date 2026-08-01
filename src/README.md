@@ -403,6 +403,13 @@ Nem gond, ha elsőnek spagetti kódot csinálsz a lényeg, hogy kódolj és ne c
 
 * [LinkedIn](https://www.linkedin.com/)
 
+## Alapvető információk az álláskereséshez
+
+- Az álláshirdetés nem egy **checklist**, hanem egy **wishlist**. A döntést bízd az interjúztatókra.
+- Nem kell minden frameworköt, programozási nyelvet vagy új eszközt ismerned.
+- Sokkal fontosabb, hogy stabil alapokkal rendelkezz.
+- A problémamegoldó képesség és a tanulási hajlandóság gyakran többet számít, mint az, hogy minden követelményt kipipálj.
+  
 ---
   
 # Könyv repository
