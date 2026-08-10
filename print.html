@@ -7109,8 +7109,9 @@ public class BaseApiTest {
 		RestAssured.baseURI="https://jsonplaceholder.typicode.com/";
 		
 		RestAssured.requestSpecification=RestAssured
-				.given()	
-					.accept(ContentType.JSON); // json formátumú választ várunk 
+				.given()
+					.accept(ContentType.JSON) // json formátumú választ várunk 
+					.contentType(ContentType.JSON); // json formátumban küldjük a kérést
 	}
 }
 </code></pre>
