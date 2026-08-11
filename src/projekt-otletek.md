@@ -1,4 +1,5 @@
 [You NEED To Build These 7 Coding Projects](https://www.youtube.com/watch?v=o-TZl7DVvCU)
+https://blog.developete.com/project-ideas-to-build
 
 # 7 Kódolási Projekt Kezdőknek
 
