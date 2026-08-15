@@ -205,11 +205,7 @@
 <li><a href="#when"><code>when()</code></a></li>
 <li><a href="#then"><code>then()</code></a></li>
 <li><a href="#extract"><code>extract()</code></a></li>
-<li><a href="#response"><code>Response</code></a>
-<ul>
-<li><a href="#ha-nincs-mez%C5%91k%C3%B6z-akkor-extractasuserclass-t-kell-haszn%C3%A1lni">Ha nincs mezőköz, akkor <code>.extract().as(User.class)</code>-t kell használni.</a></li>
-</ul>
-</li>
+<li><a href="#response"><code>Response</code></a></li>
 <li><a href="#gyakori-http-st%C3%A1tuszk%C3%B3dok">Gyakori HTTP státuszkódok</a></li>
 <li><a href="#legfontosabb-importok">Legfontosabb importok</a>
 <ul>
@@ -700,9 +696,17 @@ public class User {
 <tr><td><code>time()</code></td><td>Válaszidő</td><td><code>response.time()</code></td></tr>
 </tbody></table>
 </div>
-<p>A <code>response.jsonPath().getObject("data",User.class)</code>-nél a "data" a mezőköz. A User.class a POJO osztályl jön.
-Viszont a putnál a mezőköz legyne üres "";</p>
-<h2 id="ha-nincs-mezőköz-akkor-extractasuserclass-t-kell-használni"><a class="header" href="#ha-nincs-mezőköz-akkor-extractasuserclass-t-kell-használni">Ha nincs mezőköz, akkor <code>.extract().as(User.class)</code>-t kell használni.</a></h2>
+<p>A <code>response.jsonPath().getObject("data",User.class)</code>-nél a "data" a mezőköz. A User.class a POJO osztályból jön.
+Viszont a putnál a mezőköz ne legyen üres "";</p>
+<p>Ha nincs mezőköz, akkor <code>.extract().as(User.class)</code>-t kell használni.</p>
+<pre><code class="language-java">Album album=given().when().get("/albums/25").then().log().ifValidationFails()
+		.statusCode(200).extract().jsonPath().getObject("",Album.class);
+
+assertEquals(3,album.getUserId());
+assertEquals(25,album.getId());
+assertEquals("vero maxime id possimus sunt neque et consequatur",album.getTitle());	
+</code></pre>
+<hr />
 <h1 id="gyakori-http-státuszkódok"><a class="header" href="#gyakori-http-státuszkódok">Gyakori HTTP státuszkódok</a></h1>
 <div class="table-wrapper"><table><thead><tr><th>Kód</th><th>Jelentés</th></tr></thead><tbody>
 <tr><td><code>200</code></td><td>OK</td></tr>
