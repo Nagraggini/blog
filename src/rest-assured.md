@@ -19,7 +19,6 @@
 - [`then()`](#then)
 - [`extract()`](#extract)
 - [`Response`](#response)
-	- [Ha nincs mezőköz, akkor `.extract().as(User.class)`-t kell használni.](#ha-nincs-mezőköz-akkor-extractasuserclass-t-kell-használni)
 - [Gyakori HTTP státuszkódok](#gyakori-http-státuszkódok)
 - [Legfontosabb importok](#legfontosabb-importok)
 	- [Hamcrest Matcherek Rest Assured-ben](#hamcrest-matcherek-rest-assured-ben)
@@ -575,10 +574,20 @@ Importja: `import io.restassured.response.Response;`
 | `prettyPrint()`          | Formázott JSON kiírása | `response.prettyPrint()`                           |
 | `time()`                 | Válaszidő              | `response.time()`                                  |
 
-A `response.jsonPath().getObject("data",User.class)`-nél a "data" a mezőköz. A User.class a POJO osztályl jön.
-Viszont a putnál a mezőköz legyne üres "";
+A `response.jsonPath().getObject("data",User.class)`-nél a "data" a mezőköz. A User.class a POJO osztályból jön.
+Viszont a putnál a mezőköz ne legyen üres "";
 
-Ha nincs mezőköz, akkor `.extract().as(User.class)`-t kell használni.  
+Ha nincs mezőköz, akkor `.extract().as(User.class)`-t kell használni. 
+
+```java
+Album album=given().when().get("/albums/25").then().log().ifValidationFails()
+		.statusCode(200).extract().jsonPath().getObject("",Album.class);
+
+assertEquals(3,album.getUserId());
+assertEquals(25,album.getId());
+assertEquals("vero maxime id possimus sunt neque et consequatur",album.getTitle());	
+```
+ 
 ---
 
 # Gyakori HTTP státuszkódok
