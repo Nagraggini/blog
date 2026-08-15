@@ -495,7 +495,7 @@ A kérés előkészítése.
 | `headers()`                 | Több fejléc egyszerre                   | `.headers("Accept", "application/json")`   |
 | `contentType()`             | Request Content-Type                    | `.contentType(ContentType.JSON)`           |
 | `accept()`                  | Elfogadott válasz típusa                | `.accept(ContentType.JSON)`                |
-| `body()`                    | Request Body                            | `.body(requestBody)`                       |
+| `body()`                    | Request Body                            | `.body(requestBody) OR .body(onePOJOObj)`                       |
 | `queryParam()`              | Query paraméter                         | `.queryParam("page", 2)`                   |
 | `pathParam()`               | Path paraméter                          | `.pathParam("id", 5)`                      |
 | `formParam()`               | Form paraméter                          | `.formParam("username", "admin")`          |
@@ -691,3 +691,17 @@ Null érték biztosabb ellenőrzése:
 
 A lista legalább egy elemet tartalmaz:
 `body("$.size()", greaterThan(0))`
+
+Példa kód: 
+```java
+	given()
+			.queryParam("userId", 7) // Filtering
+		.when()
+			.get("/albums/userId=7")
+		.then()
+			.log().ifValidationFails()
+			.statusCode(200)
+			.body("$", instanceOf(List.class))
+			.body("size()", equalTo(10))			
+			.body("userId", everyItem(equalTo(7)));
+```
