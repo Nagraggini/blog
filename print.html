@@ -7395,7 +7395,7 @@ public class User {
 <tr><td><code>headers()</code></td><td>Több fejléc egyszerre</td><td><code>.headers("Accept", "application/json")</code></td></tr>
 <tr><td><code>contentType()</code></td><td>Request Content-Type</td><td><code>.contentType(ContentType.JSON)</code></td></tr>
 <tr><td><code>accept()</code></td><td>Elfogadott válasz típusa</td><td><code>.accept(ContentType.JSON)</code></td></tr>
-<tr><td><code>body()</code></td><td>Request Body</td><td><code>.body(requestBody)</code></td></tr>
+<tr><td><code>body()</code></td><td>Request Body</td><td><code>.body(requestBody) OR .body(onePOJOObj)</code></td></tr>
 <tr><td><code>queryParam()</code></td><td>Query paraméter</td><td><code>.queryParam("page", 2)</code></td></tr>
 <tr><td><code>pathParam()</code></td><td>Path paraméter</td><td><code>.pathParam("id", 5)</code></td></tr>
 <tr><td><code>formParam()</code></td><td>Form paraméter</td><td><code>.formParam("username", "admin")</code></td></tr>
@@ -7563,6 +7563,18 @@ import io.restassured.response.Response;
 <code>.body("$", anyOf(anEmptyMap(), nullValue(), empty()))</code></p>
 <p>A lista legalább egy elemet tartalmaz:
 <code>body("$.size()", greaterThan(0))</code></p>
+<p>Példa kód:</p>
+<pre><code class="language-java">	given()
+			.queryParam("userId", 7) // Filtering
+		.when()
+			.get("/albums/userId=7")
+		.then()
+			.log().ifValidationFails()
+			.statusCode(200)
+			.body("$", instanceOf(List.class))
+			.body("size()", equalTo(10))			
+			.body("userId", everyItem(equalTo(7)));
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="tartalomjegyzék-5"><a class="header" href="#tartalomjegyzék-5">Tartalomjegyzék</a></h1>
 <ul>
 <li><a href="playwright-hasznalata.html#tartalomjegyz%C3%A9k">Tartalomjegyzék</a></li>
