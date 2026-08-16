@@ -219,6 +219,31 @@
 <p>A Settingben állj át az új branchre és a Pages-en is.</p>
 <p>Pages -&gt; build and deployment -&gt; source -&gt; GitHub Actions -&gt; Static HTML
 A branch névre figyelj, hogy megfelelő legyen beállítva.</p>
+<h1 id="commit"><a class="header" href="#commit">Commit</a></h1>
+<p>Verzió követés beállítása: `git init</p>
+<p>Új ág létrehozása: <code>git branch uj-branch-neve Ágak közti váltás: </code>git switch branch-neve</p>
+<p>Új branch létrehozása és azonnali átváltás: `git switch -c uj-branch-neve</p>
+<p>Új feladat megkezdésekor érdemes külön branchet létrehozni!</p>
+<p><strong>Commitolni, így kell terminálból:</strong>
+Kijelölés: <code>git add . Mentés: </code>git commit -m "fix: "
+Feltöltés: `git push</p>
+<p>Csekkolás: `git status</p>
+<p>Hogyan épül fel egy profi commit üzenet? (A szabály)
+A Conventional Commits szabvány szerint az üzenet így néz ki: &lt;típus&gt;: &lt;rövid leírás jelen időben&gt;</p>
+<p>A legfontosabb típusok (types), amiket egy tesztautomatizálónak ismernie kell:</p>
+<ul>
+<li>ci: Minden, ami a GitHub Actions-re, pipeline-okra, Dockerre vagy futtató környezetekre vonatkozik.</li>
+<li>feat: Új funkció (pl. új tesztosztály írása, új Page Object létrehozása).</li>
+<li>fix: Hibajavítás (pl. egy elbukó teszt javítása, rossz lokátor korrigálása, NullPointerException javítása).</li>
+<li>refactor: Kód szépítése, átírása anélkül, hogy a működés változna (pl. a Page Chaining bevezetése a meglévő tesztek alá).</li>
+<li>test: Tesztek hozzáadása vagy módosítása (ha nem az architektúra, hanem konkrétan a teszteset változik).</li>
+<li>chore: Apróbb karbantartások, amik nem módosítanak forráskódot (pl. .gitignore frissítése, verziószám emelése a pom.xml-ben).</li>
+</ul>
+<p>💡 Aranybölcsességek a commitokhoz:
+Írd jelen időben és felszólító módban (angolul): Ne azt írd, hogy fixed url bug, hanem hogy fix url bug. (Úgy gondolj rá,
+mintha a commit egy utasítás lenne a Git-nek: "Ha ezt a commitot alkalmazod, az meg fogja javítani az URL bugot.")</p>
+<p>Kis kezdőbetű: A kettőspont utáni leírást kisbetűvel kezdjük, és a végére nem teszünk pontot.</p>
+<p>Fokozatosság: Ne egyszerre küldd be a CI-t, a refaktorálást és a javításokat! Érdemesebb 3-4 kisebb commitot csinálni egymás után, mert ha valami elromlik, sokkal könnyebb lesz visszagörgetni a kódot.</p>
 
                     </main>
 
