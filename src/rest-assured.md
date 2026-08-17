@@ -10,7 +10,7 @@
 - [Maven wrapper beállítása és használata](#maven-wrapper-beállítása-és-használata)
 	- [Teszt osztályok létrehozása](#teszt-osztályok-létrehozása)
 	- [REST API tesztek röviden](#rest-api-tesztek-röviden)
-- [Loggolások](#loggolások)
+- [Logolások](#logolások)
 	- [Loggolás használata](#loggolás-használata)
 - [POJO](#pojo)
 	- [A REST Assured kérés felépítése](#a-rest-assured-kérés-felépítése)
@@ -34,7 +34,7 @@ REST API-s projektjeim magyarázatokkal:
 - [reqres](https://github.com/Nagraggini/reqres) 
 - [jsonplaceholder-demo-api](https://github.com/Nagraggini/jsonplaceholder-demo-api)
 
-Az api tesztekkel a szerződés ellenőrzését végezzük el. 
+API-tesztekkel a szerződés ellenőrzését végezzük el, vagyis a segítségükkel ellenőrizhetjük többek között a végpontok működését, a státuszkódokat, a válasz törzsét, a fejléceket, a válaszidőt, az üzleti szabályokat és az API-szerződés betartását. 
 
 # Projekt létrehozása
 
@@ -82,7 +82,7 @@ Jobb klikk a projekt mappán -> Build path -> Configure build path -> JRE System
 		    <scope>test</scope>
 		</dependency>
 		
-		<!--Maven Wrapper, hogy Eclipse nélkül is lehessen futtatni. -->
+		<!-- JUnit 5 tesztkeretrendszer -->
 		<!-- Source: https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter -->
 		<dependency>
 		    <groupId>org.junit.jupiter</groupId>
@@ -100,6 +100,7 @@ Jobb klikk a projekt mappán -> Build path -> Configure build path -> JRE System
 		</dependency>
 	
 		<!--A response válaszokból esetleges objektumképzéshez szükség van json feldolgozó importra is, pl.: jackson -->
+		<!-- JSON és Java objektumok közötti szerializációhoz/deszerializációhoz -->
 		<!-- Source: https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
 		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
@@ -159,7 +160,7 @@ import io.restassured.http.ContentType;
 public class BaseApiTest {
 
 	@BeforeEach
-	void setup() {
+	protected void setup() {
         // Tesztelni kívánt weboldal címe.
 		RestAssured.baseURI="https://jsonplaceholder.typicode.com/";
 		
@@ -196,7 +197,10 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
-          
+
+	  - name: Make Maven Wrapper executable
+		run: chmod +x mvnw
+
       - name: Run Maven Tests
         run: mvn -B clean test -DCI=true
     
@@ -307,7 +311,7 @@ Linux-on még ez is kell egyszer: sudo apt install maven
 
 Utána ezt futtasd: `mvn clean test`
 
-Ezután jöhet a csomagolás: `mvn wrapper:wrapper` Ezután létrejönnek ezek: mvnw és mvnw.cmd fájlok és .mvn mappa. Innentől kezdve nem mvn utasítást kell használni, hanem mvnw utasítást! Ezután nem gond, ah nincsen maven a gépen telepítve, simán lehet terminálból is futatni a projektet.
+Ezután jöhet a csomagolás: `mvn wrapper:wrapper` Ezután létrejönnek ezek: mvnw és mvnw.cmd fájlok és .mvn mappa. Innentől kezdve nem mvn utasítást kell használni, hanem mvnw utasítást! Ezután nem gond, ha nincsen maven a gépen telepítve, simán lehet terminálból is futtatni a projektet.
 
 Futtatás linux-on: 
 `./mvnw clean test`
@@ -327,14 +331,15 @@ A body vizsgálatoknál két paraméter határozza meg az elvárt eredmény elle
 Ez egy json Path 
 https://github.com/rest-assured/rest-assured/wiki/Usage#complex-json-paths		
 							
-2. paraméter - Hamcrest matcher, ezen keresztül mondjuk meg, hogy mit várunk el az adattal kapcsolatban. Rengeteg matchers létezik, pl.: nullValue, notNullValue, greaterThan, lessThan, equalTo, hasItem, anEmptyMap stb.:
+2. paraméter - Hamcrest matcher, ezen keresztül mondjuk meg, hogy mit várunk el az adattal kapcsolatban. Rengeteg matcher létezik, pl.: nullValue, notNullValue, greaterThan, lessThan, equalTo, hasItem, anEmptyMap 
+stb.:
 https://hamcrest.org/JavaHamcrest/javadoc/2.2/org/hamcrest/Matchers.html
 
 Lentebb lesz külön részletezve.
 
-# Loggolások
+# Logolások
 
-Surfire report: A teszt eredményét foglalja össze. Futás utáni összegzés.
+Surefire report: A teszt eredményét foglalja össze. Futás utáni összegzés.
 
 Log: A hibakeresést segíti. 
 [.then után -> .log().ifValidationFails() // A jó log, csak baj esetén szól (ha pl.: létező id-t adunk meg)]
@@ -402,14 +407,14 @@ class UserUpdateTest extends BaseApiTest {
 
 ```
 
-Az src/test/recources/log4j2.xml fájlba:
+Az src/test/resources/log4j2.xml fájlba:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN"> <!-- Log4g-nek a belső működésére vonatkozik.  -->
+<Configuration status="WARN"> <!-- Log4j-nek a belső működésére vonatkozik.  -->
 
     <Appenders>
-    <!-- A konzolja írja ki a szöveget. -->
+    <!-- A konzolra írja ki a szöveget. -->
         <Console name="Console" target="SYSTEM_OUT">
         <!-- Megjelenítési forma.  -->
             <PatternLayout
@@ -418,7 +423,7 @@ Az src/test/recources/log4j2.xml fájlba:
     </Appenders>
 
     <Loggers>
-        <Root level="INFO"> <!-- Infó szintől felfelé kerül megjelenítésre a loggolás. -->
+        <Root level="INFO"> <!-- INFO szintől felfelé kerül megjelenítésre a loggolás. -->
             <AppenderRef ref="Console"/>
         </Root>
     </Loggers>
@@ -431,6 +436,8 @@ Az src/test/recources/log4j2.xml fájlba:
 Külön package-et hozunk létre a POJO osztályok számára, amelyekben az objektumokat tároljuk.
 
 A POJO (Plain Old Java Object) egyszerű Java osztály, amely általában csak adatokat tartalmaz, például mezőket, gettereket és settereket. Az elkülönített package segít a kód áttekinthetőségében és rendszerezésében.
+
+Jackson-deszerializáció esetén a POJO-nak általában szüksége van paraméter nélküli konstruktorra, valamint írható propertykre, például setterekre.
 
 Így néz ki egy osztálya:
 
@@ -462,6 +469,7 @@ public class User {
 		return email;
 	}
 	
+	 // A többi getter és setter...
 }
 ```
 
@@ -574,10 +582,28 @@ Importja: `import io.restassured.response.Response;`
 | `prettyPrint()`          | Formázott JSON kiírása | `response.prettyPrint()`                           |
 | `time()`                 | Válaszidő              | `response.time()`                                  |
 
-A `response.jsonPath().getObject("data",User.class)`-nél a "data" a mezőköz. A User.class a POJO osztályból jön.
+A `response.jsonPath().getObject("data",User.class)`-nél a "data" a mezőköz (JSONPath-kifejezés vagy elérési útvonal). 
+A User.class a POJO osztályból jön.
 Viszont a putnál a mezőköz ne legyen üres "";
 
-Ha nincs mezőköz, akkor `.extract().as(User.class)`-t kell használni. 
+Ha a teljes response body egyetlen objektumot tartalmaz, közvetlenül használható az `.extract().as(User.class)`. Ha az objektum egy beágyazott mezőben található, használható a `jsonPath().getObject()`.
+
+Példák:
+
+```java
+	User user = response.as(User.class);
+
+	User user = response.jsonPath()
+        .getObject("data", User.class);
+
+	// Lista esetén.
+	List<Album> albums = response.jsonPath()
+        .getList("", Album.class);
+
+	// A lista első eleme.
+	Album album = response.jsonPath()
+        .getObject("[0]", Album.class);
+```
 
 ```java
 Album album=given().when().get("/albums/25").then().log().ifValidationFails()
@@ -587,7 +613,33 @@ assertEquals(3,album.getUserId());
 assertEquals(25,album.getId());
 assertEquals("vero maxime id possimus sunt neque et consequatur",album.getTitle());	
 ```
- 
+
+Keresés és az alapján történő törlés: 
+```java		
+		String albumTitle = "quidem molestiae enim";
+		
+		Album album=
+			given()	
+				.queryParam("title", albumTitle)
+			.when()
+				.get("/albums")
+			.then()
+				.log().ifValidationFails()
+				.statusCode(200)
+				.body("$", not(empty()))
+				.body("title",hasItem(album.getTitle()))
+				.extract().jsonPath().getObject("[0]", Album.class);
+		
+		given()			
+			.pathParam("id", album.getId())
+		.when()
+  			.delete("/albums/{id}")
+		.then()
+			.log().ifValidationFails()
+			.statusCode(anyOf(is(200),is(204)))
+			.body("$", anyOf(anEmptyMap(),nullValue()));		
+```
+
 ---
 
 # Gyakori HTTP státuszkódok
@@ -697,7 +749,7 @@ Példa kód:
 	given()
 			.queryParam("userId", 7) // Filtering
 		.when()
-			.get("/albums/userId=7")
+			.get("/albums")
 		.then()
 			.log().ifValidationFails()
 			.statusCode(200)
