@@ -357,28 +357,31 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        
-      - name: Set up JDK21
+
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
-          java-version: '21'
+          distribution: temurin
+          java-version: "21"
+          cache: maven
 
-	  - name: Make Maven Wrapper executable
-		run: chmod +x mvnw
+      - name: Make Maven Wrapper executable
+        run: chmod +x mvnw
 
-      - name: Run Maven Tests
-        run: mvn -B clean test -DCI=true
-    
-      - name: Upload surefire test reports
+      - name: Run Maven tests
+        run: ./mvnw -B clean test
+
+      - name: Upload Surefire test reports
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: surefire-reports
           path: target/surefire-reports
+          if-no-files-found: warn
 </code></pre>
 <h2 id="gitignore"><a class="header" href="#gitignore">Gitignore</a></h2>
 <pre><code class="language-.gitignore"># =========================
@@ -636,7 +639,7 @@ public class User {
 <tr><td><code>contentType()</code></td><td>Request Content-Type</td><td><code>.contentType(ContentType.JSON)</code></td></tr>
 <tr><td><code>accept()</code></td><td>Elfogadott válasz típusa</td><td><code>.accept(ContentType.JSON)</code></td></tr>
 <tr><td><code>body()</code></td><td>Request Body</td><td><code>.body(requestBody) OR .body(onePOJOObj)</code></td></tr>
-<tr><td><code>queryParam()</code></td><td>Query paraméter</td><td><code>.queryParam("page", 2)</code></td></tr>
+<tr><td><code>queryParam()</code></td><td>Query paraméter</td><td><code>.queryParam("page", 2) </code></td></tr>
 <tr><td><code>pathParam()</code></td><td>Path paraméter</td><td><code>.pathParam("id", 5)</code></td></tr>
 <tr><td><code>formParam()</code></td><td>Form paraméter</td><td><code>.formParam("username", "admin")</code></td></tr>
 <tr><td><code>cookie()</code></td><td>Cookie küldése</td><td><code>.cookie("sessionId", "abc123")</code></td></tr>
@@ -647,6 +650,14 @@ public class User {
 <tr><td><code>log().ifValidationFails()</code></td><td>Csak sikertelen validáció esetén naplóz</td><td><code>.log().ifValidationFails()</code></td></tr>
 </tbody></table>
 </div>
+<pre><code class="language-java">	// A query paramétert nem kell beleírni az endpointba:
+	.queryParam("postId", 1)
+	.get("/comments")
+
+	// A path paraméter ezzel szemben az URL része:
+	.pathParam("id", 1)
+	.get("/comments/{id}")
+</code></pre>
 <hr />
 <h1 id="when"><a class="header" href="#when"><code>when()</code></a></h1>
 <p>A HTTP kérés elküldése.</p>
