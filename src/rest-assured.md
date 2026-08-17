@@ -187,28 +187,31 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        
-      - name: Set up JDK21
+
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
-          java-version: '21'
+          distribution: temurin
+          java-version: "21"
+          cache: maven
 
-	  - name: Make Maven Wrapper executable
-		run: chmod +x mvnw
+      - name: Make Maven Wrapper executable
+        run: chmod +x mvnw
 
-      - name: Run Maven Tests
-        run: mvn -B clean test -DCI=true
-    
-      - name: Upload surefire test reports
+      - name: Run Maven tests
+        run: ./mvnw -B clean test
+
+      - name: Upload Surefire test reports
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: surefire-reports
           path: target/surefire-reports
+          if-no-files-found: warn
 ```
 
 ## Gitignore
@@ -504,7 +507,7 @@ A kérés előkészítése.
 | `contentType()`             | Request Content-Type                    | `.contentType(ContentType.JSON)`           |
 | `accept()`                  | Elfogadott válasz típusa                | `.accept(ContentType.JSON)`                |
 | `body()`                    | Request Body                            | `.body(requestBody) OR .body(onePOJOObj)`                       |
-| `queryParam()`              | Query paraméter                         | `.queryParam("page", 2)`                   |
+| `queryParam()`              | Query paraméter                         | `.queryParam("page", 2) `                   |
 | `pathParam()`               | Path paraméter                          | `.pathParam("id", 5)`                      |
 | `formParam()`               | Form paraméter                          | `.formParam("username", "admin")`          |
 | `cookie()`                  | Cookie küldése                          | `.cookie("sessionId", "abc123")`           |
@@ -514,6 +517,15 @@ A kérés előkészítése.
 | `log().headers()`           | Csak a headerek naplózása               | `.log().headers()`                         |
 | `log().ifValidationFails()` | Csak sikertelen validáció esetén naplóz | `.log().ifValidationFails()`               |
 
+```java
+	// A query paramétert nem kell beleírni az endpointba:
+	.queryParam("postId", 1)
+	.get("/comments")
+
+	// A path paraméter ezzel szemben az URL része:
+	.pathParam("id", 1)
+	.get("/comments/{id}")
+```
 ---
 
 # `when()`
