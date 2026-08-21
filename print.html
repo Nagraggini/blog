@@ -6990,6 +6990,7 @@ assertEquals("Negatív szám nem megengedett!", exception.getMessage());
 <li><a href="https://github.com/Nagraggini/jsonplaceholder-demo-api">jsonplaceholder-demo-api</a></li>
 </ul>
 <p>API-tesztekkel a szerződés ellenőrzését végezzük el, vagyis a segítségükkel ellenőrizhetjük többek között a végpontok működését, a státuszkódokat, a válasz törzsét, a fejléceket, a válaszidőt, az üzleti szabályokat és az API-szerződés betartását.</p>
+<p>https://restful-booker.herokuapp.com/</p>
 <h1 id="projekt-létrehozása"><a class="header" href="#projekt-létrehozása">Projekt létrehozása</a></h1>
 <p>Fájl -&gt; new project -&gt; maven -&gt; create a simple project -&gt; next
 group id: hu.tanulas
@@ -7367,6 +7368,8 @@ public class User {
 	private String username;
 	private String email;
 	
+	// Kell paraméter nélküli és paraméteres konstruktor is. 
+
 	public int getId() {
 		return id;
 	}
@@ -7499,6 +7502,7 @@ Viszont a putnál a mezőköz ne legyen üres "";</p>
 	Album album = response.jsonPath()
         .getObject("[0]", Album.class);
 </code></pre>
+<p>Az assertEquals-el részletesebb hibaüzenetet kapunk.</p>
 <pre><code class="language-java">Album album=given().when().get("/albums/25").then().log().ifValidationFails()
 		.statusCode(200).extract().jsonPath().getObject("",Album.class);
 
@@ -7675,6 +7679,7 @@ import io.restassured.response.Response;
 <li><a href="playwright-hasznalata.html#abszol%C3%BAt-xpath">Abszolút XPath</a></li>
 <li><a href="playwright-hasznalata.html#relat%C3%ADv-xpath">Relatív XPath</a></li>
 <li><a href="playwright-hasznalata.html#xpath-tengelyek-axes">XPath Tengelyek (Axes)</a></li>
+<li><a href="playwright-hasznalata.html#gyakorl%C3%B3-oldal">Gyakorló oldal</a></li>
 </ul>
 </li>
 <li><a href="playwright-hasznalata.html#3-a-lok%C3%A1torok-sz%C5%B1k%C3%ADt%C3%A9se-%C3%A9s-l%C3%A1ncol%C3%A1sa-chaining--filtering">3. A lokátorok szűkítése és láncolása (Chaining &amp; Filtering)</a>
@@ -7996,6 +8001,8 @@ test("Google.hu", async ({ browser }) =&gt; {
 </tbody></table>
 </div>
 <hr />
+<h3 id="gyakorló-oldal"><a class="header" href="#gyakorló-oldal">Gyakorló oldal</a></h3>
+<p>https://testsmith-io.github.io/locator-game/</p>
 <h2 id="3-a-lokátorok-szűkítése-és-láncolása-chaining--filtering"><a class="header" href="#3-a-lokátorok-szűkítése-és-láncolása-chaining--filtering">3. A lokátorok szűkítése és láncolása (Chaining &amp; Filtering)</a></h2>
 <p>Gyakran előfordul, hogy egy weboldal több azonos tulajdonságú elemet is tartalmaz (például egy lista elemei vagy egy táblázat sorai). Ilyenkor a lokátorokat tovább lehet szűkíteni a megfelelő metódusok egymás után fűzésével.</p>
 <h3 id="alapvető-láncolás-chaining"><a class="header" href="#alapvető-láncolás-chaining">Alapvető láncolás (Chaining)</a></h3>

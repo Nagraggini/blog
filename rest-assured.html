@@ -223,6 +223,7 @@
 <li><a href="https://github.com/Nagraggini/jsonplaceholder-demo-api">jsonplaceholder-demo-api</a></li>
 </ul>
 <p>API-tesztekkel a szerződés ellenőrzését végezzük el, vagyis a segítségükkel ellenőrizhetjük többek között a végpontok működését, a státuszkódokat, a válasz törzsét, a fejléceket, a válaszidőt, az üzleti szabályokat és az API-szerződés betartását.</p>
+<p>https://restful-booker.herokuapp.com/</p>
 <h1 id="projekt-létrehozása"><a class="header" href="#projekt-létrehozása">Projekt létrehozása</a></h1>
 <p>Fájl -&gt; new project -&gt; maven -&gt; create a simple project -&gt; next
 group id: hu.tanulas
@@ -600,6 +601,8 @@ public class User {
 	private String username;
 	private String email;
 	
+	// Kell paraméter nélküli és paraméteres konstruktor is. 
+
 	public int getId() {
 		return id;
 	}
@@ -732,6 +735,7 @@ Viszont a putnál a mezőköz ne legyen üres "";</p>
 	Album album = response.jsonPath()
         .getObject("[0]", Album.class);
 </code></pre>
+<p>Az assertEquals-el részletesebb hibaüzenetet kapunk.</p>
 <pre><code class="language-java">Album album=given().when().get("/albums/25").then().log().ifValidationFails()
 		.statusCode(200).extract().jsonPath().getObject("",Album.class);
 
