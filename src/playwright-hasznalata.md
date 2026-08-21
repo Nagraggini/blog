@@ -25,6 +25,7 @@
     - [Abszolút XPath](#abszolút-xpath)
     - [Relatív XPath](#relatív-xpath)
     - [XPath Tengelyek (Axes)](#xpath-tengelyek-axes)
+    - [Gyakorló oldal](#gyakorló-oldal)
   - [3. A lokátorok szűkítése és láncolása (Chaining \& Filtering)](#3-a-lokátorok-szűkítése-és-láncolása-chaining--filtering)
     - [Alapvető láncolás (Chaining)](#alapvető-láncolás-chaining)
     - [Lista elemeinek kiválasztása index alapján](#lista-elemeinek-kiválasztása-index-alapján)
@@ -506,6 +507,10 @@ A `page.locator('xpath=//...')` vagy egyszerűen `page.locator('//...')` kifejez
 
 
 ---
+
+### Gyakorló oldal
+
+https://testsmith-io.github.io/locator-game/
 
 
 ## 3. A lokátorok szűkítése és láncolása (Chaining & Filtering)

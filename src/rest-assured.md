@@ -36,6 +36,8 @@ REST API-s projektjeim magyarázatokkal:
 
 API-tesztekkel a szerződés ellenőrzését végezzük el, vagyis a segítségükkel ellenőrizhetjük többek között a végpontok működését, a státuszkódokat, a válasz törzsét, a fejléceket, a válaszidőt, az üzleti szabályokat és az API-szerződés betartását. 
 
+https://restful-booker.herokuapp.com/
+
 # Projekt létrehozása
 
 Fájl -> new project -> maven -> create a simple project -> next 
@@ -459,6 +461,8 @@ public class User {
 	private String username;
 	private String email;
 	
+	// Kell paraméter nélküli és paraméteres konstruktor is. 
+
 	public int getId() {
 		return id;
 	}
@@ -617,6 +621,7 @@ Példák:
         .getObject("[0]", Album.class);
 ```
 
+Az assertEquals-el részletesebb hibaüzenetet kapunk. 
 ```java
 Album album=given().when().get("/albums/25").then().log().ifValidationFails()
 		.statusCode(200).extract().jsonPath().getObject("",Album.class);
