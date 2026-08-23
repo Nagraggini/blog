@@ -7420,13 +7420,32 @@ public class User {
 <tr><td><code>log().ifValidationFails()</code></td><td>Csak sikertelen validáció esetén naplóz</td><td><code>.log().ifValidationFails()</code></td></tr>
 </tbody></table>
 </div>
-<pre><code class="language-java">	// A query paramétert nem kell beleírni az endpointba:
-	.queryParam("postId", 1)
-	.get("/comments")
+<pre><code class="language-java">	// A path paraméter ezzel szemben az URL része:
+	// GET /comments/10
+	given()
+		.pathParam("id", 1)
+	.when()
+		.get("/comments/{id}"); // A {id} helyőrző.
 
-	// A path paraméter ezzel szemben az URL része:
-	.pathParam("id", 1)
-	.get("/comments/{id}")
+	// A query paramétert nem kell beleírni az endpointba:
+	// GET /comments?postId=1
+	given()
+		.queryParam("postId", 1)
+		.queryParam("email", "test@test.com")
+	.when()
+		.get("/comments");
+
+	// A Map.of() létrehoz egy kulcs–érték párt:
+	// A REST Assured ezt JSON-ná alakítja:
+	/*{
+ 		 "email": "patched@test.com"
+	}*/
+	given()
+		.pathParam("id", 10)
+		.body(Map.of("email", "patched@test.com"))
+	.when()
+		.put("/comments/{id}");
+
 </code></pre>
 <hr />
 <h1 id="when"><a class="header" href="#when"><code>when()</code></a></h1>
@@ -7485,22 +7504,35 @@ public class User {
 </tbody></table>
 </div>
 <p>A <code>response.jsonPath().getObject("data",User.class)</code>-nél a "data" a mezőköz (JSONPath-kifejezés vagy elérési útvonal).
-A User.class a POJO osztályból jön.
-Viszont a putnál a mezőköz ne legyen üres "";</p>
+A User.class a POJO osztályból jön.</p>
 <p>Ha a teljes response body egyetlen objektumot tartalmaz, közvetlenül használható az <code>.extract().as(User.class)</code>. Ha az objektum egy beágyazott mezőben található, használható a <code>jsonPath().getObject()</code>.</p>
 <p>Példák:</p>
-<pre><code class="language-java">	User user = response.as(User.class);
+<pre><code class="language-java">	// Ha az objektum egy beágyazott mezőben található, akkor kell a "data".
+	User user = response.as(User.class);
 
 	User user = response.jsonPath()
         .getObject("data", User.class);
 
-	// Lista esetén.
+	// Lista esetén. Az "Album" a POJOból jön.
 	List&lt;Album&gt; albums = response.jsonPath()
         .getList("", Album.class);
 
 	// A lista első eleme.
 	Album album = response.jsonPath()
         .getObject("[0]", Album.class);
+
+	// Csak egy változó értékének lekérése.
+	String searchedEmail = "Eliseo@gardner.biz";
+
+	String extractedEmail =
+		given()
+			.queryParam("email", searchedEmail)
+		.when()
+			.get("/comments")
+		.then()		
+			.extract()
+			.jsonPath()
+			.getString("[0].email"); // Ha szám lenne, akkor getInt kéne.
 </code></pre>
 <p>Az assertEquals-el részletesebb hibaüzenetet kapunk.</p>
 <pre><code class="language-java">Album album=given().when().get("/albums/25").then().log().ifValidationFails()
