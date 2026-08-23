@@ -522,13 +522,32 @@ A kérés előkészítése.
 | `log().ifValidationFails()` | Csak sikertelen validáció esetén naplóz | `.log().ifValidationFails()`               |
 
 ```java
-	// A query paramétert nem kell beleírni az endpointba:
-	.queryParam("postId", 1)
-	.get("/comments")
-
 	// A path paraméter ezzel szemben az URL része:
-	.pathParam("id", 1)
-	.get("/comments/{id}")
+	// GET /comments/10
+	given()
+		.pathParam("id", 1)
+	.when()
+		.get("/comments/{id}"); // A {id} helyőrző.
+
+	// A query paramétert nem kell beleírni az endpointba:
+	// GET /comments?postId=1
+	given()
+		.queryParam("postId", 1)
+		.queryParam("email", "test@test.com")
+	.when()
+		.get("/comments");
+
+	// A Map.of() létrehoz egy kulcs–érték párt:
+	// A REST Assured ezt JSON-ná alakítja:
+	/*{
+ 		 "email": "patched@test.com"
+	}*/
+	given()
+		.pathParam("id", 10)
+		.body(Map.of("email", "patched@test.com"))
+	.when()
+		.put("/comments/{id}");
+
 ```
 ---
 
@@ -600,25 +619,38 @@ Importja: `import io.restassured.response.Response;`
 
 A `response.jsonPath().getObject("data",User.class)`-nél a "data" a mezőköz (JSONPath-kifejezés vagy elérési útvonal). 
 A User.class a POJO osztályból jön.
-Viszont a putnál a mezőköz ne legyen üres "";
 
 Ha a teljes response body egyetlen objektumot tartalmaz, közvetlenül használható az `.extract().as(User.class)`. Ha az objektum egy beágyazott mezőben található, használható a `jsonPath().getObject()`.
 
 Példák:
 
 ```java
+	// Ha az objektum egy beágyazott mezőben található, akkor kell a "data".
 	User user = response.as(User.class);
 
 	User user = response.jsonPath()
         .getObject("data", User.class);
 
-	// Lista esetén.
+	// Lista esetén. Az "Album" a POJOból jön.
 	List<Album> albums = response.jsonPath()
         .getList("", Album.class);
 
 	// A lista első eleme.
 	Album album = response.jsonPath()
         .getObject("[0]", Album.class);
+
+	// Csak egy változó értékének lekérése.
+	String searchedEmail = "Eliseo@gardner.biz";
+
+	String extractedEmail =
+		given()
+			.queryParam("email", searchedEmail)
+		.when()
+			.get("/comments")
+		.then()		
+			.extract()
+			.jsonPath()
+			.getString("[0].email"); // Ha szám lenne, akkor getInt kéne.
 ```
 
 Az assertEquals-el részletesebb hibaüzenetet kapunk. 
