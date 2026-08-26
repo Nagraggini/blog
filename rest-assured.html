@@ -740,15 +740,23 @@ public class User {
 A User.class a POJO osztályból jön.</p>
 <p>Ha a teljes response body egyetlen objektumot tartalmaz, közvetlenül használható az <code>.extract().as(User.class)</code>. Ha az objektum egy beágyazott mezőben található, használható a <code>jsonPath().getObject()</code>.</p>
 <p>Példák:</p>
-<pre><code class="language-java">	// Ha az objektum egy beágyazott mezőben található, akkor kell a "data".
-	User user = response.as(User.class);
+<pre><code class="language-java">	User user = response.as(User.class);
 
+	// Ha az objektum egy beágyazott mezőben található, akkor kell a "data".
 	User user = response.jsonPath()
         .getObject("data", User.class);
 
-	// Lista esetén. Az "Album" a POJOból jön.
+	// Lista esetén. Az "Album" rész a POJOból jön.
 	List&lt;Album&gt; albums = response.jsonPath()
         .getList("", Album.class);
+
+	// Így egy nem rendezhető lista lesz belőle.
+	List &lt;Integer&gt; albumIds= response.jsonPath()
+        .getList("id",Integer.class);
+
+	// Így egy rendezhető lista lesz belőle.
+	List &lt;Integer&gt; photoIds= new ArrayList&lt;&gt;(
+		response.jsonPath().getList("id",Integer.class));
 
 	// A lista első eleme.
 	Album album = response.jsonPath()
