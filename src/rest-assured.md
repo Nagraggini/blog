@@ -625,15 +625,23 @@ Ha a teljes response body egyetlen objektumot tartalmaz, közvetlenül használh
 Példák:
 
 ```java
-	// Ha az objektum egy beágyazott mezőben található, akkor kell a "data".
 	User user = response.as(User.class);
 
+	// Ha az objektum egy beágyazott mezőben található, akkor kell a "data".
 	User user = response.jsonPath()
         .getObject("data", User.class);
 
-	// Lista esetén. Az "Album" a POJOból jön.
+	// Lista esetén. Az "Album" rész a POJOból jön.
 	List<Album> albums = response.jsonPath()
         .getList("", Album.class);
+
+	// Így egy nem rendezhető lista lesz belőle.
+	List <Integer> albumIds= response.jsonPath()
+        .getList("id",Integer.class);
+
+	// Így egy rendezhető lista lesz belőle.
+	List <Integer> photoIds= new ArrayList<>(
+		response.jsonPath().getList("id",Integer.class));
 
 	// A lista első eleme.
 	Album album = response.jsonPath()

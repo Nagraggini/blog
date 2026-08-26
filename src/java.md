@@ -2969,6 +2969,12 @@ public void HashMapPelda() {
 
                 List<Integer> szamok = Arrays.asList(5, 10, 15, 20, 25, 10, 5);
 
+                // Növekvő sorrendbe rendezzük:
+                Collections.sort(szamok);
+
+                // Csökkenő sorrendbe rendezzük:
+                Collections.sort(szamok, Collections.reverseOrder());
+                
                 // Set használata (nagyon gyakori): duplikáció eltávolítása
                 Set<Integer> egyedi = new HashSet<>(szamok); // ismétlődések eltávolítása
                 System.out.println(egyedi);
