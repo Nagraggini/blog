@@ -401,6 +401,9 @@ Nem gond, ha elsőnek spagetti kódot csinálsz a lényeg, hogy kódolj és ne c
 * [RxResume](https://rxresu.me/)  
   Modern fejlesztői önéletrajz készítő.
 
+* [Overleaf](https://www.overleaf.com/latex/templates/jakes-resume/syzfjbzwjncs)
+  Önéletrajz készítő oldal, pl.: LaTeX fájl minta alapján.
+
 * [LinkedIn](https://www.linkedin.com/)
 
 ## Alapvető információk az álláskereséshez
